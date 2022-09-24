@@ -1,4 +1,5 @@
-import bvp_logo from "../images/bvp_logo.png"
+import bvp_logo from "../images/bvp_logo.png";
+import "./Navbar.css";
 const Navbar = (props) => {
 
 return(

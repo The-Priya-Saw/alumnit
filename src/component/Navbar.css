@@ -1,26 +1,8 @@
-:root{
-    --primary-color: #EB1D36;
-    --cream-color: #F5EDDC;
-    --gradient-box: linear-gradient(180deg, #FA9494 0%, #EB1D36 100%);
-
-
-
-}
-*{
-    margin:0;
-    padding: 0%;
-    box-sizing: border-box;
-}
-
-body{
-}
-/* css for home page */
-
 .navbar{
     width: 100%; 
     background-color: transparent;
     display: flex;
-    font-family: 'chivo';
+    font-family: 'chivo', sans-serif;
     font-size: 30px;
     color: var(--primary-color);
     justify-content: space-between;
