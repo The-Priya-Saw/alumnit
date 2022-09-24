@@ -1,0 +1,26 @@
+#header{
+   background-image: url("../../images/home_background.png");  
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 100vw;
+   height: 100vh;
+   /* padding: 0 50px; */
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-end;
+   overflow: hidden;
+}
+
+#header div{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: flex-end;
+}
+
+#quote{
+   display:inline-block;
+   font-family: "chivo";
+   font-size: 128px;
+}

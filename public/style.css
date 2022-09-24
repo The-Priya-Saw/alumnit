@@ -1,0 +1,52 @@
+:root{
+    --primary-color: #EB1D36;
+    --cream-color: #F5EDDC;
+    --gradient-box: linear-gradient(180deg, #FA9494 0%, #EB1D36 100%);
+
+
+
+}
+*{
+    margin:0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+}
+/* css for home page */
+
+.navbar{
+    width: 100%; 
+    background-color: transparent;
+    display: flex;
+    font-family: 'chivo';
+    font-size: 30px;
+    color: var(--primary-color);
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    /* flex-direction: row; */
+}
+
+.navbar a {
+    text-decoration: none;
+    margin: 0px 25px;
+    color: var(--cream-color);
+    padding: 5px;
+    border: 2px solid transparent;
+
+}
+
+.navbar a:hover{
+    /* color: var(--primary-color);
+    text-decoration: underline; */
+    border-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    /* border-radius: 10px; */
+}
+
+.bvp_logo{
+    width: 228px;
+    /* height: 153px; */
+}
