@@ -278,4 +278,10 @@ body{
 
 }
 
+.popup-content {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+  }
+
   
