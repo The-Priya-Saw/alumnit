@@ -1,0 +1,22 @@
+.Card {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    padding: 15px;
+  }
+  
+  .Card * {
+    margin: 3.5px;
+    padding: 0px;
+  }
+  
+  .Card .img {
+    width: 120px;
+  }
+  
+  .Card .facultyName {
+    font-weight: bold;
+  }
+  
