@@ -1,0 +1,19 @@
+.JobCard {
+
+    background-color: var(--grey);
+    padding: 33px 23px;
+    border: 2px solid var(--dark-text);
+    border-radius: 20px;
+    box-shadow: 1px 2px 50px 2px #585354d1;
+
+}
+
+.JobCard * {
+    margin: 9px;
+    font-size: 20px;
+}
+
+.JobCard .JobTitle {
+
+   font-size: 24px;
+}

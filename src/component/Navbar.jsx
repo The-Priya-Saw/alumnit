@@ -9,10 +9,10 @@ return(
      </div>
      <div className="links">
       <a href="">Home</a>
-      <a href="">Home</a>
-      <a href="">Home</a>
-      <a href="">Home</a>
-      <a href="">Home</a>
+      <a href="community.html">Community</a>
+      <a href="">Events</a>
+      <a href="">Career</a>
+      <a href="">Login</a>
      </div>
    </nav>
 ); 
