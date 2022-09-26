@@ -1,0 +1,24 @@
+.EventCard{
+    background-color: var(--grey);
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-item: center;
+    padding: 10px;
+}
+
+.eventThumbnail img, .eventContent {
+    margin: 5px;
+}
+
+.eventThumbnail img{
+    width: 300px;
+}
+
+.EventCard p{
+    font-size: 20px
+}
+
+.eventName{
+    font-size: 24px;
+}

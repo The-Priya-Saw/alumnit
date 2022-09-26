@@ -1,0 +1,9 @@
+.Event{
+    background-color: var(--cream-color);
+    background-image: url("../images/EventBackground.svg");
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
