@@ -9,12 +9,10 @@ function App() {
       {/* <Home/> */}
         {/* <Career/> */}
      {/* <Event/> */}
-     <community/>
+     <Community/>
 
     </div>
   );
 }
-
-
 
 export default App;

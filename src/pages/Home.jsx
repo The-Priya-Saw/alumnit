@@ -1,9 +1,9 @@
-import AlumnITLogo from "../images/alumnit_logo.svg";
-import Navbar from  "../component/Navbar.jsx";
+
 import Card from "../component/Card.jsx";
 import Carousel from "react-elastic-carousel";
 const breakPoints = [
-  { width: 1, itemsToShow: 1 },
+  { width: 1, itemsToShow: 1 },import AlumnITLogo from "../images/alumnit_logo.svg";
+import Navbar from  "../component/Navbar.jsx";
   { width: 550, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 4 }
