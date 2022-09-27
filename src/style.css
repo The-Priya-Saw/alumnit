@@ -284,4 +284,9 @@ body{
     background-color: transparent;
   }
 
-  
+  /*----------------------- Community CSS------------------ */
+
+  .Community{
+    background-color: var(--grey);
+
+  }
