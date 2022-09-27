@@ -4,6 +4,35 @@
     background-position-y: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-attachment: fixed;
+    height: 100%;
     width: 100vw;
+   
+}
+
+.EventContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 50px;
+}
+
+.eventCategories{
+    flex: 6;
+    margin-right: 40px;
+}
+.eventPosts{
+    flex: 10;
+}
+
+.eventCategories{
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.category{
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--grey);
 }
