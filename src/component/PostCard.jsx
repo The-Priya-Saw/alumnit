@@ -6,7 +6,7 @@ const PostCard = (props) => {
     return (
         <div className="PostCard">
             <div className="CardHeader">
-                <img className="profilePic" src="" alt="" />
+                <img className="profilePic" src={props.profileImage} alt="" />
 
                 <h3 className="username">{props.username}</h3>
             </div>

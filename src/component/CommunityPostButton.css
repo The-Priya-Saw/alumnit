@@ -2,4 +2,22 @@
     background-color: white;
     padding: 10px;
     border-radius: 0.8rem;
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+}
+
+.CommunityPostButton > *{
+    margin: 5px;
+}
+
+.CommunityPostButton .BtnCommunityPost{
+    padding: 10px 20px;
+    border-radius: 50px;
+    flex-grow: 1;
+    text-align: start;
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,0.6);
+    font-weight: bold;
+    color: rgba(0,0,0,0.6);
 }
