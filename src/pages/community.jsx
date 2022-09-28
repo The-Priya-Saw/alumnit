@@ -1,6 +1,7 @@
 import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
 import PostCard from "../component/PostCard";
+import CommunityPostButton from "../component/CommunityPostButton";
 
 const json = [
     {
@@ -39,6 +40,8 @@ const Community =(props) =>{
     return( 
         <div className="Community"> 
         <Navbar/>
+        <div className="communityPostContainer">
+            <CommunityPostButton/>
         {
             json.map(post => 
                 <PostCard
@@ -49,6 +52,8 @@ const Community =(props) =>{
                 />
             )
         }
+        </div>
+
        </div>
     );
 }

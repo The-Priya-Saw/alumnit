@@ -35,6 +35,11 @@
 
 .PostCard .profilePic{
     width: 50px;
+    border-radius: 50px;
+}
+
+.PostCard .username{
+    font-size: 20px;
 }
 
 .PostCard .PostContent{
