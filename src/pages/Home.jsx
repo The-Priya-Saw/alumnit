@@ -1,9 +1,11 @@
 
 import Card from "../component/Card.jsx";
 import Carousel from "react-elastic-carousel";
-const breakPoints = [
-  { width: 1, itemsToShow: 1 },import AlumnITLogo from "../images/alumnit_logo.svg";
+import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 4 }
