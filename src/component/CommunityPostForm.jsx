@@ -2,6 +2,7 @@ import "./CommnunityPostForm.css";
 
 const CommnunityPostForm = (props) => {
   return (
+    <div className="cmfContainer">
     <div className="CommnunityPostForm">
       <div className="formHeader">Create Post</div>
       <div className="userDetail">
@@ -25,6 +26,8 @@ const CommnunityPostForm = (props) => {
         <button id="btnPost">Post</button>
       </div>
     </div>
+    </div>
+
   );
 };
 

@@ -2,6 +2,7 @@ import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
 import PostCard from "../component/PostCard";
 import CommunityPostButton from "../component/CommunityPostButton";
+import { useState } from "react";
 
 const json = [
     {
@@ -36,14 +37,17 @@ const json = [
 ]
 
 const Community =(props) =>{
-
+    const [postArray,setPostArray] = useState([json[0]]);
+    const addPost = (post) => {
+        setPostArray();
+    }
     return( 
         <div className="Community"> 
         <Navbar/>
         <div className="communityPostContainer">
             <CommunityPostButton/>
         {
-            json.map(post => 
+            postArray.map(post => 
                 <PostCard
                     profileImage={post.profileImage}
                     username={post.username}
