@@ -1,0 +1,22 @@
+.InviteAlumni{
+    height: 100vh;
+    width: 100vw;
+}
+
+.AlumniContainer{
+    display: flex;
+    flex-direction: row;
+    /* margin: 50px; */
+    height: 100%;
+    width: 100%;
+}
+
+.SearchAlumni{
+    background-color: aquamarine;
+    
+}
+
+
+.DisplayAlumni{
+    background-color: antiquewhite;
+}

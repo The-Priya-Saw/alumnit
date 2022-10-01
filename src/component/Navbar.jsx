@@ -9,10 +9,17 @@ return(
      </div>
      <div className="links">
       <a href="/">Home</a>
+      {
+        props.isAdmin ? <a href="/admin/inviteAlumni">Invite Alumni</a> : null
+      }
       <a href="community">Community</a>
       <a href="event">Events</a>
-      <a href="carer">Career</a>
-      <a href="login">Login</a>
+      <a href="career">Career</a>
+      {
+        props.isLogin ? <a href="/">Log out</a> : <a href="login">Login</a>
+      }
+      {/* <a href="login">{props.isLogin ? "Logout" : "Login"}</a> */}
+
      </div>
    </nav>
 ); 
