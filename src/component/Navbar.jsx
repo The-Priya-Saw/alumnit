@@ -8,11 +8,11 @@ return(
       <img className="bvp_logo" src={bvp_logo}/>
      </div>
      <div className="links">
-      <a href="">Home</a>
-      <a href="community.html">Community</a>
-      <a href="">Events</a>
-      <a href="">Career</a>
-      <a href="">Login</a>
+      <a href="/">Home</a>
+      <a href="community">Community</a>
+      <a href="event">Events</a>
+      <a href="carer">Career</a>
+      <a href="login">Login</a>
      </div>
    </nav>
 ); 

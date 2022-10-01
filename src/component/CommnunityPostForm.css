@@ -14,7 +14,10 @@
     width: 512px;
     justify-content: flex-start;
     align-items: stretch;
-    background-color: white;
+    background: #ffffffde;
+    box-shadow: 0 2px 5px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 17px );
 
 
     /* padding: 10px; */
@@ -22,6 +25,26 @@
   
   .CommnunityPostForm .formHeader {
     text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .close{
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+  }
+
+  .close:hover{
+    cursor: pointer;
+  }
+
+  .CommnunityPostForm .username{
+    font-size: 20px;
+    margin: 0 10px;
   }
   
   .CommnunityPostForm > * {
@@ -34,6 +57,7 @@
   
   .CommnunityPostForm > *:last-child {
     border: none;
+
   }
   
   .userDetail {
@@ -58,6 +82,7 @@
   }
   
   .CommnunityPostForm .writeContent textarea {
+    background-color: transparent;
     resize: none;
     border: none;
     outline: none;

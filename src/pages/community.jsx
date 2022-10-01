@@ -44,10 +44,11 @@ const Community =(props) =>{
     return( 
         <div className="Community"> 
         <Navbar/>
+        
         <div className="communityPostContainer">
             <CommunityPostButton/>
         {
-            postArray.map(post => 
+            json.map(post => 
                 <PostCard
                     profileImage={post.profileImage}
                     username={post.username}

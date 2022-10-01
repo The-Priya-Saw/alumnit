@@ -4,7 +4,10 @@
     border: 1px solid var(--grey);
     width: 700px;
     margin: 10px;
-    background-color: white;
+    background: #efe7e7e6;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 17px );
 }
 
 .PostCard:hover{
