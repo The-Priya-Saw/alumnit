@@ -1,5 +1,6 @@
 import Navbar from "../../component/Navbar";
 import "./InviteAlumni.css";
+import AlumniShortProfile from "../../component/admin/AlumniShortProfile";
 
 const InviteAlumni = (props) => {
 
@@ -9,9 +10,22 @@ const InviteAlumni = (props) => {
             <div className="AlumniContainer">
 
                 <div className="SearchAlumni">
-                   <input type="search" placeholder="Search"/>
-                   
+                    <div className="divSearchBox">
+                        <input id="alumnisearchbox" type="search" placeholder="Search" />
+                        <button id="btnSearch">Search</button>
+                    </div>
+                    <div className="searchResults">
+                    {[1,1,1,1,1,1,1,1,1,].map((a,index) => 
+                        <AlumniShortProfile 
+                            fullName="Lorem Ipsum"
+                            college="BVCOENM 2019 - 2021"
+                            title="Sr Engineer at Tata Consulting Engineers"
+                            imgUrl="https://picsum.photos/50"
+                            isConnected={index%2 == 0}
+                        />
+                    )}
 
+                    </div>
                 </div>
 
                 <div className="DisplayAlumni">

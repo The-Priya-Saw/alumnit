@@ -1,22 +1,72 @@
 .InviteAlumni{
     height: 100vh;
     width: 100vw;
+
 }
 
 .AlumniContainer{
     display: flex;
     flex-direction: row;
-    /* margin: 50px; */
+    padding: 10px 30px;
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
+}
+
+.DisplayAlumni{
+    flex-direction: column;
 }
 
 .SearchAlumni{
-    background-color: aquamarine;
-    
+    background-color: rgb(245, 245, 245);
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 20px;
+    width: 600px;
+}
+
+.divSearchBox{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+    .divSearchBox > *{
+        margin: 10px;
+    }
+
+    #alumnisearchbox{
+        padding: 8px;
+        font-family: 'Chivo', sans-serif;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        outline: none;
+        text-align: center;
+        flex: 12;
+        margin-left: 0;
+    }
+
+    #btnSearch{
+        background-color: var(--primary-color);
+        color: white;
+        border: 1px solid #1e1e1e;
+        padding: 8px 30px;
+        border-radius: 5px;
+        flex: 2;
+        margin-right: 0;
+
+    }
+
+    #alumnisearchbox:focus{
+        border-color: black;
+    }
+
+.searchResults{
+    width: 100%;
+    flex: 1;
+    overflow-y: scroll;
+
 }
 
 
-.DisplayAlumni{
-    background-color: antiquewhite;
-}

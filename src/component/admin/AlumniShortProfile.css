@@ -1,0 +1,42 @@
+.AlumniShortProfile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+.alumniShortProfileDetail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.alumniProfilePicture{
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+    margin: 0 10px;
+}
+
+.text-details{
+    margin: 0 10px;
+}
+
+.btnAction{
+    width: 100px;
+
+    padding: 4px 0;
+    font-size: 14px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+    
+}
