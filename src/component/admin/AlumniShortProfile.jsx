@@ -1,8 +1,11 @@
 import "./AlumniShortProfile.css";
 
 const AlumniShortProfile = (props) => {
+    const handleCheckbox = (e) => {
+        props.setSelected(e.target.checked)
+    }
     return <div className="AlumniShortProfile">
-        <input name="selected" type="checkbox"/>
+        <input onChange={handleCheckbox} name="selected" type="checkbox"/>
         <div className="alumniShortProfileDetail">
             <img className="alumniProfilePicture" src={props.imgUrl}/>
             <div className="text-details">

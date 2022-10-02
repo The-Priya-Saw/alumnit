@@ -8,7 +8,9 @@ import dummyJSON from "./dummy";
 
 
 const InviteAlumni = (props) => {
+    //TODO: Implement toggle send button when no item is selected
     const [searchTerm,setSearchTerm] = useState("");
+    const [isSelected,setSelected] = useState();
     const onSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
         console.log(e.target)
@@ -26,10 +28,13 @@ const InviteAlumni = (props) => {
                     <div className="divSearchBox">
                         <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search" />
                         <button onClick={onSearch} id="btnSearch">Search</button>
+                        <button onClick={onSearch} disabled={!isSelected} id="btnSend">Send</button>
                     </div>
                     <div className="searchResults">
-                        {[].map((a, index) =>
+                        {[1,2,3,4,5,6,7,8,9,0,0].map((a, index) =>
                             <AlumniShortProfile
+                                isSelected={isSelected}
+                                setSelected={setSelected}
                                 fullName="Lorem Ipsum"
                                 college="BVCOENM 2019 - 2021"
                                 title="Sr Engineer at Tata Consulting Engineers"
