@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+.Login{
+    background-image: url("../images/home_background.png");  
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Login *{
+    margin: 0;
+}
+
+.login_container{
+    justify-self: center;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_container form{
+    min-width: 400px;
+    background-color: var(--cream-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login_container form > *{
+    margin: 10px;
+}
+
+.login_container h1{
+    font-family: 'Nunito', sans-serif;
+    font-weight:500;
+    font-size: 35px;
+}
+
+.logo img{
+    height: 40px;
+}
+
+.input-element{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #1e1e1e7c;
+    font-size: 20px;
+    outline: none;
+}
+
+.btnLogin{
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: #1e1e1e;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+.btnLogin:hover{
+    background-color: var(--primary-color);
+    color: white;
+    transition: 500ms color;
+    transition: 500ms background-color;
+}
+
+.redirect-links{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.redirect-links a{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.redirect-links a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
