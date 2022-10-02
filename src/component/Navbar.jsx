@@ -12,9 +12,9 @@ return(
       {
         props.isAdmin ? <a href="/admin/inviteAlumni">Invite Alumni</a> : null
       }
-      <a href="community">Community</a>
-      <a href="event">Events</a>
-      <a href="career">Career</a>
+      <a href="/community">Community</a>
+      <a href="/event">Events</a>
+      <a href="/career">Career</a>
       {
         props.isLogin ? <a href="/">Log out</a> : <a href="login">Login</a>
       }

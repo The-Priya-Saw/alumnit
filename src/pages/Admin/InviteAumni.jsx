@@ -41,9 +41,9 @@ const InviteAlumni = (props) => {
                     </div>
                 </div>
 
-                {/* <div className="DisplayAlumni">
+                <div className="DisplayAlumni">
                     <AlumniProfile profile={dummyJSON[0]}/>
-                </div> */}
+                </div>
 
             </div>
         </div>
