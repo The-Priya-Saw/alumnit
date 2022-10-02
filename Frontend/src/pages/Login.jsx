@@ -17,10 +17,10 @@ const Login = (props) => {
                 <button className="btnLogin">Login</button>
                 <div className="redirect-links">
                         <div>
-                            <span>No Account? <a href="signup">Create One</a></span>
+                            <span>No Account? <a href="Register">Create One</a></span>
                         </div>
                         <div>
-                            <span><a href="signup">Forget Password</a></span>
+                            <span><a href="#">Forget Password</a></span>
                         </div>
                 </div>
             </form>
