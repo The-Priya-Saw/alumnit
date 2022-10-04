@@ -6,6 +6,7 @@ import UserModel from "./models/UserModel.js";
 // import {registerUser} from "./controllers/AuthController.js";
 import AuthRoutes from "./routes/AuthRoute.js";
 import EventRoutes from "./routes/EventRoute.js";
+import CareersRoute from "./routes/CareersRoute.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use(AuthRoutes);
 app.use("/events",EventRoutes);
+app.use("/careers",CareersRoute);
 
 
 app.get("/",(req,res)=>{
