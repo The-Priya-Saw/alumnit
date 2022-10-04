@@ -11,7 +11,7 @@ const UserModel = new mongoose.Schema({
         required: true
     },
     PassingYear:{
-        type: Date,
+        type: String,
         required: true
     },
     Email:{

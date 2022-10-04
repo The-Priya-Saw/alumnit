@@ -10,4 +10,25 @@ const registerUser = async (req,res) => {
     }
 }
 
-export default registerUser;
+const loginUser = async (req,res) => {
+    const {Email,Password} = req.body;
+    console.log(req.body);
+    try {
+        const User = await UserModel.findOne({Email: Email,Password: Password}).exec();
+        if(User){
+            res.status(200).json(User)
+        }else{
+            throw "Invalid Email / Password!";
+        }
+    } catch (error) {
+        console.log("Error Occured")
+        console.log(error);
+    }
+}
+
+// export default registerUser;
+
+export {
+    registerUser,
+    loginUser
+};
