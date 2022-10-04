@@ -6,11 +6,11 @@ const UserModel = new mongoose.Schema({
         required: true
     },
 
-    JobTilte:{
+    JobTitle:{
         type: String,
         required: true
     },
-   passingYear:{
+    PassingYear:{
         type: Date,
         required: true
     },
