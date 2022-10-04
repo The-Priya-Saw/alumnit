@@ -3,6 +3,7 @@ import Card from "../component/Card.jsx";
 import Carousel from "react-elastic-carousel";
 import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
+// import EventImage from "../images/EventImage.jpeg";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -37,38 +38,22 @@ const Home = (props) => {
 
             </section>
             <section id="department_faculty">
-                <span className="section-heading">Department Faculty</span>
+                <span className="section-heading">Upcoming Events</span>
                 <Carousel className="carousel" breakPoints={breakPoints}>
                     <Card
-                    img="https://bvcoenm.edu.in/wp-content/uploads/2017/01/ShankarPatil.jpg"
-                    facultyName="Dr. Shankar M. Patil."
-                    jobTitle="HOD & Professor"
+                    img={"EventImage.jpeg"}
                     />
-                    <Card
-                    img="https://bvcoenm.edu.in/wp-content/uploads/2017/01/ShankarPatil.jpg"
-                    facultyName="Dr. Shankar M. Patil."
-                    jobTitle="HOD & Professor"
+                     <Card
+                    img={"EventImage.jpeg"}
                     />
-                    <Card
-                    img="https://bvcoenm.edu.in/wp-content/uploads/2017/01/ShankarPatil.jpg"
-                    facultyName="Dr. Shankar M. Patil."
-                    jobTitle="HOD & Professor"
+                     <Card
+                    img={"EventImage.jpeg"}
                     />
-                                        <Card
-                    img="https://bvcoenm.edu.in/wp-content/uploads/2017/01/ShankarPatil.jpg"
-                    facultyName="Dr. Shankar M. Patil."
-                    jobTitle="HOD & Professor"
+                     <Card
+                    img={"EventImage.jpeg"}
                     />
-                    <Card
-                    img="https://bvcoenm.edu.in/wp-content/uploads/2017/01/ShankarPatil.jpg"
-                    facultyName="Dr. Shankar M. Patil."
-                    jobTitle="HOD & Professor"
-                    />
-                    <Card
-                    img="https://bvcoenm.edu.in/wp-content/uploads/2017/01/ShankarPatil.jpg"
-                    facultyName="Dr. Shankar M. Patil."
-                    jobTitle="HOD & Professor"
-                    />
+                   
+                   
                 </Carousel>
             </section>
             <section id="footer"></section>
