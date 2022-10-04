@@ -16,7 +16,10 @@
 
 .eventThumbnail{
     /* flex: 5; */
+    min-width: 350px;
     max-width: 350px;
+
+    object-fit: contain;
 }
 .eventContent{
     /* flex: 7; */
@@ -37,4 +40,15 @@
 
 .eventName{
     font-size: 24px;
+}
+
+.btnEventCardAction{
+    min-width: 100px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
 }

@@ -21,19 +21,20 @@ import Card from 'react-bootstrap/Card';
 import "./EventCard.css";
 
 
-function EventCard() {
+function EventCard(props) {
+  const date = new Date(props.Date); 
   return (
     <Card className="EventCard" style={{ width: '100%' }}>
-        <Card.Img variant="top" className="eventThumbnail" src="https://picsum.photos/536/354" />
+        <Card.Img variant="top" className="eventThumbnail" src={props.EventImage} />
         <div className="eventContent">
-            <Card.Header>Event</Card.Header>
+            <Card.Header className="eventName ">{props.EventName}</Card.Header>
             <Card.Body>
-            <Card.Title>Date, Time</Card.Title>
-            <Card.Title>Location</Card.Title>
-            <Card.Text>
-                With supporting text below as a natural lead-in to additional content.
+            <Card.Title className="eventDate eventTimes">{date.toLocaleDateString() + " , " + date.toLocaleTimeString()}</Card.Title>
+            <Card.Title className="location">{props.Location}</Card.Title>
+            <Card.Text className="description">
+                {props.Description}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button className="btnEventCardAction py-2" variant="primary"> <a href={props.ApplyUrl}>Apply</a> </Button>
         </Card.Body>
         </div>
 

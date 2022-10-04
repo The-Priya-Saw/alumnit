@@ -1,44 +1,71 @@
-import Navbar from  "../component/Navbar.jsx";
+import Navbar from "../component/Navbar.jsx";
 import EventCard from "../component/EventCard.jsx";
 import "./Event.css";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-const array = Array.from(Array(10).keys());
+import { useState, useEffect } from "react";
+
+const array = Array.from(Array(0).keys());
+// array = []
 
 
-const Event =(props) => {
+const Event = (props) => {
+    const [eventPosts, updateEventPosts] = useState([]);
+    const [category, setCategory] = useState("all");
+    useEffect(() => {
+        const fetchEvents = async () => {
+            const response = await fetch("http://localhost:3001/events/" + category);
+            const eventPostsJson = await response.json();
+            updateEventPosts(eventPostsJson);
+        }
+        fetchEvents();
+    }, [category]);
 
-    return( 
-     <div className="Event">
-        <Navbar/>
-        <div className="EventContainer">
-            <div className="eventCategories">
-                <h1>Event Categories</h1>
-                <div className="categoriesContainer">
-                <div className="category">
-                        All Events
-                    </div>
-                    <div className="category">
-                        Upcoming Events
-                    </div>
-                    <div className="category">
-                        Past Events
+    const handleCategoryClick = (e) => {
+        const target = e.target;
+        const buttons = document.querySelectorAll(".eventCategories button"); 
+        buttons.forEach(button => button.classList.remove("selected"));
+        target.classList.add("selected");
+        setCategory(target.getAttribute("tag"));
+    }
+
+
+    return (
+        <div className="Event">
+            <Navbar />
+            <div className="EventContainer">
+                <div className="eventCategories">
+                    <h1>Event Categories</h1>
+                    <div className="categoriesContainer">
+                        <button tag="all" id="AllEvents" onClick={handleCategoryClick}  className="category selected">
+                            All Events
+                        </button>
+                        <button tag="upcoming" id="UpcomingEvents" onClick={handleCategoryClick}  className="category">
+                            Upcoming Events
+                        </button>
+                        <button tag="past" id="PastEvents" onClick={handleCategoryClick}  className="category">
+                            Past Events
+                        </button>
                     </div>
                 </div>
+                <div className="eventPosts">
+                    {
+                        eventPosts.map(eventPost => {
+                            return <EventCard
+                                key={eventPost["_id"]}
+                                EventName={eventPost.EventName}
+                                EventImage={eventPost.EventImage}
+                                Date={eventPost.Date}
+                                Location={eventPost.Location}
+                                Description={eventPost.Description}
+                                ApplyUrl={eventPost.ApplyUrl}
+                            />
+                        })
+                    }
+
+                </div>
             </div>
-            <div className="eventPosts">
-                {
-                    array.map(x => {
-                        return <EventCard/>
-                    })
-                }
-                
-            </div>
+
+
         </div>
-        
-        
-     </div>
 
     );
 }
