@@ -3,7 +3,7 @@ import "./Login.css";
 import logo from "../images/alumnit_logo.svg"
 const Login = (props) => {
     return <div className="Login">
-        <Navbar/>
+        <Navbar isTransperent={true}/>
         <div className="login_container">
             <form>
                 <div className="logo">

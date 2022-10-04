@@ -6,29 +6,29 @@ import { useState } from "react";
 
 const json = [
     {
-        profileImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-518361844-1551386275.jpg?crop=0.671xw:1.00xh;0.305xw,0&resize=640:*",
+        profileImage: "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png",
         username: "priya_saw",
         description:"my name is priya.i m currently pursuing bachelors in information technology engineering"
     },
     {
-        profileImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-518361844-1551386275.jpg?crop=0.671xw:1.00xh;0.305xw,0&resize=640:*",
-        username: "angelpriya",
-        postImage:"https://i.ytimg.com/vi/Xte4qGCJLN4/maxresdefault.jpg",
+        profileImage: "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png",
+        username: "Bonnie Bennete",
+        postImage:"https://cdn3.whatculture.com/images/2021/03/6ce0d7c07eaff9ab-600x338.jpg",
         description:"my name is priya.i m currently pursuing bachelors in information technology engineering"
     }, 
     {
-        profileImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-518361844-1551386275.jpg?crop=0.671xw:1.00xh;0.305xw,0&resize=640:*",
+        profileImage: "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png",
         username: "loki",
         description:"my name is priya.i m currently pursuing bachelors in information technology engineering"
     }, 
     
     {
-        profileImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-518361844-1551386275.jpg?crop=0.671xw:1.00xh;0.305xw,0&resize=640:*",
+        profileImage: "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png",
         username: "anujalandge",
         description:"my name is priya.i m currently pursuing bachelors in information technology engineering"
     }, 
     {
-        profileImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-518361844-1551386275.jpg?crop=0.671xw:1.00xh;0.305xw,0&resize=640:*",
+        profileImage: "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png",
         username: "tejaswi jadhaav",
         description:"my name is priya.i m currently pursuing bachelors in information technology engineering"
     }

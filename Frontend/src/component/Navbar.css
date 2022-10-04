@@ -14,17 +14,18 @@
 .navbar a {
     text-decoration: none;
     margin: 0px 25px;
-    color: var(--cream-color);
+    /* color: var(--cream-color); */
     padding: 5px;
     border: 2px solid transparent;
-    color: rgb(69, 8, 8);
+    color: inherit;
 
 }
 
 .navbar a:hover{
     /* color: var(--primary-color);
     text-decoration: underline; */
-    border-color: var(--primary-color);
+    /* border-color: var(--primary-color); */
+    color: var(--primary-color);
     /* background-color: var(--primary-color); */
     /* border-radius: 10px; */
 }
@@ -32,4 +33,12 @@
 .bvp_logo{
     width: 228px;
     /* height: 153px; */
+}
+
+.transperent{
+    color: var(--cream-color);
+}
+
+.non-transperent{
+    color: rgb(69, 8, 8);
 }
