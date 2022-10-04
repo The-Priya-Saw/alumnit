@@ -276,7 +276,7 @@ body{
 
 .job-card-container .JobCard {
     margin: 10px;
-
+    min-width: 465px;
 }
 
 .popup-content {

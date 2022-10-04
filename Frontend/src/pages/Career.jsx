@@ -3,11 +3,20 @@ import Navbar from  "../component/Navbar.jsx";
 import JobCard from "../component/JobCard.jsx";
 import CustomPostForm from "../component/CareerPostForm.jsx";
 import Popup from "reactjs-popup";
-
+import { useState, useEffect } from "react";
 
 const array = Array.from(Array(10).keys());
 
 const Career = () => {
+    const [posts, updatePosts] = useState([]);
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const response = await fetch("http://localhost:3001/careers/all");
+            const postsJson = await response.json();
+            updatePosts(postsJson);
+        }
+        fetchPosts();
+    },[]);
     return ( 
         <div className="Commnunity">
             <Navbar/>
@@ -24,13 +33,14 @@ const Career = () => {
                 <div className="divider"></div>
                 <div className="job-card-container">
 
-                {array.map(x =>                     <JobCard 
-                        JobTitle="Software Engineer"
-                        Salary="$100,000"
-                        Eligibility="B.E./M.E./PG in Computer related field"
-                        Link="https://bit.ly/3BXIrtK"
-                        CompanyName="Google"
-                        Location="USA"
+                {posts.map(post =>                     
+                <JobCard 
+                        JobTitle={post.Title}
+                        Salary={"₹" + post.Salary}
+                        Eligibility={post.Eligibility}
+                        Link={post.ApplyLink}
+                        CompanyName={post.CompanyName}
+                        Location={post.Location}
                     />)}
 
                 </div>

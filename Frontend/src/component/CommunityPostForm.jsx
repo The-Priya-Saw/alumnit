@@ -1,4 +1,4 @@
-import "./CommnunityPostForm.css";
+import "./CommunityPostForm.css";
 
 const CommnunityPostForm = (props) => {
   return (
