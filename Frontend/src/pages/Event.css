@@ -47,3 +47,24 @@
     font-weight: bold;
     color: var(--primary-color);
 }
+#btn-event-post {
+
+padding: 10px;
+border: 3px solid var(--primary-color);
+border-radius: 10px;
+
+background-color: var(--cream-color);
+color: var(--dark-text);
+font-weight: bolder;
+font-size: 20px;
+
+}
+
+#btn-event-post:hover {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--primary-color); }
+  }
+  

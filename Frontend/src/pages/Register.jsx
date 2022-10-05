@@ -23,7 +23,7 @@ const Register = (props) => {
                 JobTitle: JobTitle.value, 
                 PassingYear: PassingYear.value, 
                 Email: Email.value, 
-                ProfilePicture: ProfilePicture.value, 
+                ProfilePicture: "", 
                 Password: Password.value
             })
         });

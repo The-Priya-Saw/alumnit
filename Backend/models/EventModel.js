@@ -6,6 +6,11 @@ const EventModel = new mongoose.Schema({
         required: true,
         unique: true
     },
+
+    EventImage:{
+        type:String
+    },
+
     Date:{
         type: Date,
         required: true
