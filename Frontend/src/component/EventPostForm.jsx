@@ -6,9 +6,32 @@ import "./CareerPostForm.css";
 import Image from 'react-bootstrap/Image';
 
 const EventPostForm = (props) => {
-    const handleSubmit = () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const target = event.target;
+        const {EventName, Date, Location, Description, ApplyLink} = target;
 
-
+        const EventResponse = await fetch("http://localhost:3001/events/add", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(
+                {   
+                    EventName: EventName.value, 
+                    Date: Date.value, 
+                    Location: Location.value, 
+                    Description: Description.value, 
+                    ApplyLink: ApplyLink.value
+                }
+            )
+        });
+        const resJson = await EventResponse.json();
+        if(EventResponse.status === 200){
+            alert("Event Uploaded SuccessFully");
+            console.log(resJson);
+        }else{
+            console.log(resJson.error);
+            alert(resJson.error);
+        }
 
     }
 
