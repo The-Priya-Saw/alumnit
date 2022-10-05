@@ -9,6 +9,7 @@ const array = Array.from(Array(10).keys());
 
 const Career = () => {
     const [posts, updatePosts] = useState([]);
+    const [updateCount, setUpdateCount] = useState(0);
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch("http://localhost:3001/careers/all");
@@ -16,7 +17,7 @@ const Career = () => {
             updatePosts(postsJson);
         }
         fetchPosts();
-    },[]);
+    },[updateCount]);
     return ( 
         <div className="Commnunity">
             <Navbar/>
@@ -27,21 +28,26 @@ const Career = () => {
                 <div className="job-post-heading">
                     <h1>Career</h1>
                     <Popup trigger={<button type="input" id="btn-job-post"> Post Job / Internships</button>} modal>
-                        <CustomPostForm />
+                        {/* <CustomPostForm updatePage={setUpdateCount}/> */}
+                        {
+                            close => <CustomPostForm close={close} updatePage={setUpdateCount}/>
+                            
+                        }
                     </Popup>
                 </div>
                 <div className="divider"></div>
                 <div className="job-card-container">
 
-                {posts.map(post =>                     
-                <JobCard 
+                {posts.reverse().map(post =>                     
+                    <JobCard 
                         JobTitle={post.Title}
                         Salary={"₹" + post.Salary}
                         Eligibility={post.Eligibility}
                         Link={post.ApplyLink}
                         CompanyName={post.CompanyName}
                         Location={post.Location}
-                    />)}
+                    />)
+                }
 
                 </div>
            
