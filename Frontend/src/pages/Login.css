@@ -40,7 +40,7 @@
 .login_container h1{
     font-family: 'Nunito', sans-serif;
     font-weight:500;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .logo img{
@@ -51,7 +51,7 @@
     background: transparent;
     border: none;
     border-bottom: 1px solid #1e1e1e7c;
-    font-size: 20px;
+    font-size: 16px;
     outline: none;
 }
 

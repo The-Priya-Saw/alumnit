@@ -23,6 +23,7 @@ const loginUser = async (req,res) => {
     } catch (error) {
         console.log("Error Occured")
         console.log(error);
+        res.status(403).json({error: error});
     }
 }
 

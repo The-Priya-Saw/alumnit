@@ -3,7 +3,7 @@
     background-color: transparent;
     display: flex;
     font-family: 'chivo', sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     color: var(--primary-color);
     justify-content: space-between;
     align-items: center;
@@ -26,6 +26,9 @@
     text-decoration: underline; */
     /* border-color: var(--primary-color); */
     color: var(--primary-color);
+    border-bottom: 5px  solid var(--primary-color);
+    transition: 150ms ease-in color;
+    transition: 150ms ease-in border;
     /* background-color: var(--primary-color); */
     /* border-radius: 10px; */
 }
