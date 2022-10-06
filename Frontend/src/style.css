@@ -4,10 +4,12 @@
     --brand-gradient: linear-gradient(180deg, #FA9494 0%, #EB1D36 100%);
     --padding-x: 50px;
     --grey: #D9D9D9;
+    --footer-text-color: #888888;
     --dark-text: #1E1E1E; 
 
 
 }
+
 *{
     margin:0;
     padding: 0%;
@@ -30,6 +32,10 @@ body{
 /* HOME */
 .Home{
     overflow: hidden;
+}
+
+.Home hr{
+    font-size: 50px;
 }
     #header{
         background-image: url("./images/home_background.png");  

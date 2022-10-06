@@ -4,6 +4,7 @@ import Carousel from "react-elastic-carousel";
 import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
 import { useEffect, useState } from "react";
+import Footer from "../component/Footer.jsx";
 // import EventImage from "../images/EventImage.jpeg";
 
 const breakPoints = [
@@ -49,24 +50,13 @@ const Home = (props) => {
                 <div className="welcome-content">
                     <p>Whether you’re looking to reconnect or grow your career, support <span className="text-primary">Bharati Vidpeeth’s</span> mission or learn about the impact of giving, you’ve come to the right place. we’ll show you how, where, and why. </p>
                     <p>If you’ve come <span className="text-primary">To connect</span>, we encourage you to check out communities, career offerings, and events. Take a look around and find the Bharati vidyapeeth that speaks to you.</p>
+                    <hr/>
                 </div>
 
             </section>
             <section id="department_faculty">
                 <span className="section-heading">Upcoming Events</span>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    {/* <Card
-                    img={"EventImage.jpeg"}
-                    />
-                     <Card
-                    img={"EventImage.jpeg"}
-                    />
-                     <Card
-                    img={"EventImage.jpeg"}
-                    />
-                     <Card
-                    img={"EventImage.jpeg"}
-                    /> */}
                    {
                     eventPosts.map(card => <Card
                         img={card.EventImage}
@@ -79,7 +69,9 @@ const Home = (props) => {
                    
                 </Carousel>
             </section>
-            <section id="footer"></section>
+
+            <Footer/>
+            
 
         </div>
     );
