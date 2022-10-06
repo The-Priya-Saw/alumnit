@@ -5,11 +5,15 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .Login *{
@@ -31,6 +35,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .login_container form > *{
@@ -88,3 +93,35 @@
     cursor: pointer;
 }
 
+.inputImg{
+    display: none;
+}
+
+.lblUpload{
+    /* background-color: #1111; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: fit-content; */
+    /* padding: 10px; */
+    cursor: pointer;
+
+}
+
+.imgProfile{
+    background-color: #1111;
+    border: 3px solid black;
+    border-radius: 50px;
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    
+}
+
+#selectedImage{
+    max-width: 200px;
+text-overflow: ellipsis;
+overflow: hidden;
+}

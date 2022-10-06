@@ -1,11 +1,27 @@
 import UserModel from "../models/UserModel.js";
 import mongoose from "mongoose";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const registerUser = async (req,res) => {
-    try{
-        const User = await UserModel.create(req.body);
+    // try{
+    //     const User = await UserModel.create(req.body);
+    //     res.status(200).json(User);
+    // }catch(error){
+    //     res.status(400).json({error:error.message});
+    // }
+    try {
+        const {FullName,JobTitle,PassingYear,Email,Password} = req.body;
+        const ProfilePicture = `${req.protocol}://${req.get('host')}/${req.file.path}`;
+        console.log(ProfilePicture);
+        console.log(req.body);
+        const User = await UserModel.create({FullName,JobTitle,PassingYear,Email,Password,ProfilePicture});
         res.status(200).json(User);
-    }catch(error){
+
+    } catch (error) {
         res.status(400).json({error:error.message});
     }
 }
