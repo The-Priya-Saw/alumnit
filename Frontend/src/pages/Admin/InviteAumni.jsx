@@ -17,16 +17,26 @@ const InviteAlumni = (props) => {
     }
 
     const onSearch = async (e) => {
-        const response = await fetch("http://localhost:3002/extractUrls", {
+        const urlsResponse = await fetch("http://localhost:3002/extractUrls", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 keyword: searchTerm
             })
         });
-        const resJson = await response.json();
-        console.log(resJson);
-        setResultProfiles(resJson);
+        const urlResJson = await urlsResponse.json();
+        console.log(urlResJson);
+
+        const profilesResponse = await fetch("http://localhost:3002/getProfiles", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                profileUrls: urlResJson
+            })
+        });
+        const profilesResJson = await profilesResponse.json();
+        console.log(profilesResJson);
+        setResultProfiles(profilesResJson);
 
     }
     return (
