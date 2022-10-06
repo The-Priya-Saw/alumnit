@@ -9,20 +9,29 @@ const EventPostForm = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const target = event.target;
-        const {EventName, Date, Location, Description, ApplyLink} = target;
+        const {EventName, Date, Location, Description, ApplyLink,EventImage} = target;
+
+        const data = new FormData();
+        data.append("EventImage", EventImage.files[0]);
+        data.append("EventName",EventName.value);
+        data.append("Date",Date.value);
+        data.append("Location",Location.value);
+        data.append("Description",Description.value);
+        data.append("ApplyUrl",ApplyLink.value);
 
         const EventResponse = await fetch("http://localhost:3001/events/add", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(
-                {   
-                    EventName: EventName.value, 
-                    Date: Date.value, 
-                    Location: Location.value, 
-                    Description: Description.value, 
-                    ApplyLink: ApplyLink.value
-                }
-            )
+            // headers: {"Content-Type": "application/json"},
+            // body: JSON.stringify(
+            //     {   
+            //         EventName: EventName.value, 
+            //         Date: Date.value, 
+            //         Location: Location.value, 
+            //         Description: Description.value, 
+            //         ApplyLink: ApplyLink.value
+            //     }
+            // )
+            body: data
         });
         const resJson = await EventResponse.json();
         if(EventResponse.status === 200){
