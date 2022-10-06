@@ -1,23 +1,33 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Navbar from "../../component/Navbar";
 import "./InviteAlumni.css";
 import AlumniShortProfile from "../../component/admin/AlumniShortProfile";
-
 import AlumniProfile from "../../component/admin/AlumniProfile";
-import dummyJSON from "./dummy";
 
 
 const InviteAlumni = (props) => {
     //TODO: Implement toggle send button when no item is selected
     const [searchTerm,setSearchTerm] = useState("");
     const [isSelected,setSelected] = useState();
+    const [resultProfiles, setResultProfiles] = useState([]);
+
     const onSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
         console.log(e.target)
     }
 
-    const onSearch = (e) => {
-        alert(searchTerm);
+    const onSearch = async (e) => {
+        const response = await fetch("http://localhost:3002/extractUrls", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                keyword: searchTerm
+            })
+        });
+        const resJson = await response.json();
+        console.log(resJson);
+        setResultProfiles(resJson);
+
     }
     return (
         <div className="InviteAlumni">
@@ -31,14 +41,14 @@ const InviteAlumni = (props) => {
                         <button onClick={onSearch} disabled={!isSelected} id="btnSend">Send</button>
                     </div>
                     <div className="searchResults">
-                        {[1,2,3,4,5,6,7,8,9,0,0].map((a, index) =>
+                        {resultProfiles.map((profile, index) =>
                             <AlumniShortProfile
                                 isSelected={isSelected}
                                 setSelected={setSelected}
-                                fullName="Lorem Ipsum"
+                                fullName={profile.fullName}
                                 college="BVCOENM 2019 - 2021"
-                                title="Sr Engineer at Tata Consulting Engineers"
-                                imgUrl="https://picsum.photos/50"
+                                title={profile.title}
+                                imgUrl={profile.profileImg}
                                 isConnected={index % 2 == 0}
                             />
                         )}
@@ -47,7 +57,8 @@ const InviteAlumni = (props) => {
                 </div>
 
                 <div className="DisplayAlumni">
-                    <AlumniProfile profile={dummyJSON[0]}/>
+                    {resultProfiles[0] ? <AlumniProfile profile={resultProfiles[0]}/> : ""}
+                    
                 </div>
 
             </div>

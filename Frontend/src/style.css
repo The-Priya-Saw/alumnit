@@ -35,7 +35,8 @@ body{
 }
 
 .Home hr{
-    font-size: 50px;
+    border: 2px solid;
+    margin-top: 90px;
 }
     #header{
         background-image: url("./images/home_background.png");  
