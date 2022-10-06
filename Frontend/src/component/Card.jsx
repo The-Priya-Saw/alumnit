@@ -10,12 +10,11 @@ const Card = (props) => {
       <div class="card1">
         <img src={props.img} alt="none"/>
         <div class="descriptions">
-          <h1>Event</h1>
-          <p> hello world </p>
-          <button>
-            <i class=""></i>
-            <a href="#">View more </a>
-          </button>
+          <h1>{props.EventName}</h1>
+          <h5> {props.Date} </h5>
+          <h5> {props.Location} </h5>
+          <a href="#">View more </a>
+
         </div>
       </div>
       <div class="youtubeBtn">

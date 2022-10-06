@@ -3,6 +3,7 @@ import Card from "../component/Card.jsx";
 import Carousel from "react-elastic-carousel";
 import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
+import { useEffect, useState } from "react";
 // import EventImage from "../images/EventImage.jpeg";
 
 const breakPoints = [
@@ -12,6 +13,20 @@ const breakPoints = [
   { width: 1200, itemsToShow: 4 }
 ];
 const Home = (props) => {
+    const [eventPosts, setEventPosts] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const eventResponse = await fetch("http://localhost:3001/events/upcoming");
+            const resJson = await eventResponse.json()
+            if(eventResponse.status === 200){
+                setEventPosts(resJson);
+                console.log(resJson)
+            }else {
+                alert(resJson.error);
+            }
+        }
+        fetchData()
+    });
     return (
         <div className="Home">
             <section id="header">
@@ -40,7 +55,7 @@ const Home = (props) => {
             <section id="department_faculty">
                 <span className="section-heading">Upcoming Events</span>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    <Card
+                    {/* <Card
                     img={"EventImage.jpeg"}
                     />
                      <Card
@@ -51,8 +66,16 @@ const Home = (props) => {
                     />
                      <Card
                     img={"EventImage.jpeg"}
-                    />
-                   
+                    /> */}
+                   {
+                    eventPosts.map(card => <Card
+                        img={card.EventImage}
+                        EventName={card.EventName}
+                        Description={card.Description}
+                        Date={card.Date}
+                        Location={card.Location}
+                        />)
+                   }
                    
                 </Carousel>
             </section>
