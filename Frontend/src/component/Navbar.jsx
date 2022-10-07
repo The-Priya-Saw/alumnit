@@ -52,7 +52,7 @@ return(
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Invite Alumni</Dropdown.Item>
+            <Dropdown.Item href="/admin/invitealumni">Invite Alumni</Dropdown.Item>
             <Dropdown.Item href="#/action-2">View Users</Dropdown.Item>
             <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
           </Dropdown.Menu>

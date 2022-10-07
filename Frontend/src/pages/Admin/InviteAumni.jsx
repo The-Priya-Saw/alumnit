@@ -59,7 +59,7 @@ const InviteAlumni = (props) => {
                                 college="BVCOENM 2019 - 2021"
                                 title={profile.title}
                                 imgUrl={profile.profileImg}
-                                isConnected={index % 2 == 0}
+                                isConnected={profile.isConnected}
                             />
                         )}
 
