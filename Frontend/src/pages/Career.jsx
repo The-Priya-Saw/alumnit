@@ -2,6 +2,8 @@ import AlumnITLogo from "../images/alumnit_logo.svg";
 import Navbar from  "../component/Navbar.jsx";
 import JobCard from "../component/JobCard.jsx";
 import CustomPostForm from "../component/CareerPostForm.jsx";
+import Footer from "../component/Footer.jsx";
+
 import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 
@@ -20,7 +22,7 @@ const Career = () => {
     },[updateCount]);
     return ( 
         <div className="Commnunity">
-            <Navbar/>
+            <Navbar shadowNavbar={true}/>
             <div class="bg"></div>
             <div class="bg bg2"></div>
                     <div class="bg bg3"></div>
@@ -52,6 +54,7 @@ const Career = () => {
                 </div>
            
             </div>
+            <Footer/>
         </div>
     );
 }

@@ -22,7 +22,7 @@ const UserModel = new mongoose.Schema({
     ProfilePicture:{
         type: String,
     },
-   Password:{
+    Password:{
         type: String,
         required: true
     },

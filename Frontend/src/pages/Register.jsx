@@ -52,8 +52,6 @@ const Register = (props) => {
     }
 
     const handleImageChange = (event) => {
-        // setProfilePicture(event.target.files[0]);
-        // console.log(profilePicture)
         if (event.target.files && event.target.files[0]) {
             var reader = new FileReader();
 

@@ -1,13 +1,16 @@
 .CustomForm {
     padding: 25px 25px;
     border: 5px solid #e1e1e1;
-    max-width: 800px;
+    max-width: 600px;
     width: 100vw;
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: var(--cream-color);
+    max-height: 94vh;
+    overflow: auto;
+    margin-bottom: 10px;
     /* align-items: flex-start; */
   }
   

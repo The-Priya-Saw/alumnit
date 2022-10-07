@@ -27,7 +27,7 @@ const Home = (props) => {
             }
         }
         fetchData()
-    });
+    },[]);
     return (
         <div className="Home">
             <section id="header">

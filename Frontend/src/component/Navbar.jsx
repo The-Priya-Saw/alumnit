@@ -2,7 +2,7 @@ import bvp_logo from "../images/bvp_logo.png";
 import "./Navbar.css";
 const Navbar = (props) => {
 return(
-    <nav class="navbar">
+    <nav class={"navbar " + (props.shadowNavbar ? "shadowNavbar" : "")}>
      <div className="brandLogo">
       <img className="bvp_logo" src={bvp_logo}/>
      </div>

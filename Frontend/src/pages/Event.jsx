@@ -4,7 +4,9 @@ import "./Event.css";
 import { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import EventPostForm from "../component/EventPostForm.jsx";
+import Footer from "../component/Footer.jsx";
 
+const loggedInUser = {name:"Admin", role:""};
 
 const array = Array.from(Array(0).keys());
 // array = []
@@ -33,16 +35,9 @@ const Event = (props) => {
 
     return (
         <div className="Event">
-            <Navbar />
-
-
-
+            <Navbar shadowNavbar={true}/>
             <div className="EventContainer">
-
-
                 <div className="eventCategories">
-
-
                     <h1>Event Categories</h1>
                     <div className="categoriesContainer">
                         <button tag="all" id="AllEvents" onClick={handleCategoryClick} className="category selected">
@@ -55,16 +50,16 @@ const Event = (props) => {
                             Past Events
                         </button>
                     </div>
-
                     <div className="Event-post">
-
+                    {
+                        loggedInUser.role === "admin" ? 
                         <Popup trigger={<button type="input" id="btn-event-post"> Post Event</button>} modal>
                             {
-
                                 close => <EventPostForm close={close} />
-
                             }
                         </Popup>
+                        : null
+                    }
                     </div>
 
 
@@ -87,7 +82,7 @@ const Event = (props) => {
 
                 </div>
             </div>
-
+            <Footer></Footer>
 
         </div>
 
