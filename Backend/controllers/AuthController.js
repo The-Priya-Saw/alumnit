@@ -1,10 +1,19 @@
 import UserModel from "../models/UserModel.js";
+import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import * as dotenv from 'dotenv';
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const createToken = (id) => {
+    return jwt.sign({id},process.env.SECRET_KEY,{
+        expiresIn: process.env.SECRET_KEY_MAX_AGE
+    });
+}
 
 const registerUser = async (req,res) => {
     // try{
@@ -19,6 +28,7 @@ const registerUser = async (req,res) => {
         console.log(ProfilePicture);
         console.log(req.body);
         const User = await UserModel.create({FullName,JobTitle,PassingYear,Email,Password,ProfilePicture});
+        
         res.status(200).json(User);
 
     } catch (error) {

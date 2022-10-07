@@ -5,6 +5,7 @@ export default [
         "profileImg": "https://media-exp1.licdn.com/dms/image/C4D03AQEhZ9WRN6X7nA/profile-displayphoto-shrink_200_200/0/1661583518580?e=1668643200&v=beta&t=fOwj6HgZWnZuwqv7W3RIW4ssdMtQWpSZyz3vFOdjFPY",
         "title": "IT Engineering' 24 | BVPCOE | VJTI",
         "location": "Mumbai, Maharashtra, India",
+        "isConnected": true,
         "education": [
             {
                 "title": "Bharati Vidyapeeth College of Engineering, Navi Mumbai",
@@ -29,6 +30,8 @@ export default [
         "profileImg": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
         "title": "Process engineer at Petrofac",
         "location": "Mumbai, Maharashtra, India",
+        "isConnected": false,
+
         "education": [
             {
                 "title": "Mahatma Gandhi Mission's College Of Engineering and Technology, Navi Mumbai",
@@ -43,11 +46,13 @@ export default [
         ]
     },
     {
-        "url": "https://www.linkedin.com/in/priya-johnbalan-83909b11b",
+        "url": "https://www.linkedin.com/in/lokesh-patil-77221a24a/",
         "fullName": "Priya Johnbalan",
         "profileImg": "https://media-exp1.licdn.com/dms/image/C5103AQHSoFnK1InnVg/profile-displayphoto-shrink_200_200/0/1546005210895?e=1668643200&v=beta&t=umWpDyJryLwSyouElfBK7eT54SPMqgvyPiOMc5W9G9c",
         "title": "Embedded Software Engineer at Millennium Technologies",
         "location": "Mumbai, Maharashtra, India",
+        "isConnected": false,
+
         "education": [
             {
                 "title": "Bharati Vidyapeeth College of Engineering, Navi Mumbai",
