@@ -43,7 +43,7 @@ const Community =(props) =>{
     }
     return( 
         <div className="Community"> 
-        <Navbar/>
+        <Navbar shadowNavbar={true}/>
         
         <div className="communityPostContainer">
             <CommunityPostButton/>

@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const addEvent = async (req,res) => {
     try {
         const {EventName, Date, Location, Description, ApplyUrl} = req.body;
-        const EventImage = `${req.protocol}://${req.get('host')}/${req.file.path}`;
+        const EventImage = req.file ? `${req.protocol}://${req.get('host')}/${req.file.path}` : `${req.protocol}://${req.get('host')}/public/events/placeholder.png`;
         const Event = await EventModel.create({EventName, Date, Location, Description, ApplyUrl, EventImage})
 
         res.status(200).json({msg:"working"});

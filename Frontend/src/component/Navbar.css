@@ -8,7 +8,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 50px;
+
+
     /* flex-direction: row; */
+}
+
+.shadowNavbar{
+    box-shadow: 1px -2px 18px 0px #0000006b;
+    background-color: #78787812
 }
 
 .navbar a {

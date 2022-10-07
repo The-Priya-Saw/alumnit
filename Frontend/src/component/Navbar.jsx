@@ -21,28 +21,23 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const Navbar = (props) => {
-  return (
+return(
     <nav class="navbar">
-      <div className="brandLogo">
-        <img className="bvp_logo" src={bvp_logo} />
-      </div>
-      <div className={"links " + (props.isTransperent ? "transperent" : "non-transperent")} >
-        <a href="/">Home</a>
-        {
-          props.isAdmin ? <a href="/admin/inviteAlumni">Invite Alumni</a> : null
-        }
-        <a href="/community">Community</a>
-        <a href="/event">Events</a>
-        <a href="/career">Career</a>
-
-
-
-        {
-          props.isLogin ? <a href="/">Log out</a> : <a href="login">Login</a>
-        }
-
-
-        {/* <a href="login">{props.isLogin ? "Logout" : "Login"}</a> */}
+     <div className="brandLogo">
+      <img className="bvp_logo" src={bvp_logo}/>
+     </div>
+     <div className={"links " + (props.isTransperent ?  "transperent" : "non-transperent")} >
+      <a href="/">Home</a>
+      {
+        props.isAdmin ? <a href="/admin/inviteAlumni">Invite Alumni</a> : null
+      }
+      <a href="/community">Community</a>
+      <a href="/event">Events</a>
+      <a href="/career">Career</a>
+      {
+        props.isLogin ? <a href="/">Log out</a> : <a href="login">Login</a>
+      }
+      {/* <a href="login">{props.isLogin ? "Logout" : "Login"}</a> */}
 
         {/* <Dropdown
           name="location"

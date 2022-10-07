@@ -13,7 +13,7 @@ const Card = (props) => {
           <h1>{props.EventName}</h1>
           <h5> {props.Date} </h5>
           <h5> {props.Location} </h5>
-          <a href="#">View more </a>
+          <a href="/event">View more </a>
 
         </div>
       </div>

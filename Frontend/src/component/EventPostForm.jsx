@@ -3,9 +3,10 @@ import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reactjs-popup/dist/index.css";
 import "./CareerPostForm.css";
-import Image from 'react-bootstrap/Image';
+import { useState } from "react"; 
 
 const EventPostForm = (props) => {
+    // const [images, setImages] = useState();
     const handleSubmit = async (event) => {
         event.preventDefault();
         const target = event.target;
@@ -38,11 +39,24 @@ const EventPostForm = (props) => {
             alert("Event Uploaded SuccessFully");
             console.log(resJson);
         }else{
-            console.log(resJson.error);
-            alert(resJson.error);
+            console.log(resJson);
+            alert(resJson);
         }
 
     }
+
+    // const handleImageChange = (event) => {
+    //     if (event.target.files && event.target.files[0]) {
+    //         var reader = new FileReader();
+
+    //         reader.onload = function (e) {
+    //             setImages({data: e.target.result, name: event.target.files[0].name});
+    //         };
+
+    //         reader.readAsDataURL(event.target.files[0]);
+    //     }
+    // }
+
 
     return (
         <Form onSubmit={handleSubmit} className="CustomForm">
@@ -53,8 +67,9 @@ const EventPostForm = (props) => {
                 <Form.Control name="EventName" placeholder="Enter the name of Event" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="">
+                {/* <img src={ images && images.data} height={"100px"} width={"100px"}></img><br/> */}
                 <Form.Label>select image</Form.Label>
-                <input type="file" name="EventImage" className="form-control" id="" />
+                <input type="file" multiple accept="image/*" name="EventImage" className="form-control" id="" />
 
             </Form.Group>
           
