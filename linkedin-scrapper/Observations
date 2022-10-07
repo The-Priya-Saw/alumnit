@@ -1,0 +1,7 @@
+48: Normal
+49: Cached
+45: Cached
+56: minimal args + cache
+29: cache + {waitUntil: 'domcontentloaded'} added to page load 60% speedup
+
+
