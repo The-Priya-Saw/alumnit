@@ -3,6 +3,16 @@ node_modules
 =======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Ignore Cache Data
+my/path
+
+# Ignore Cookie
+cookie.json
+
+# Node Module
+node_modules
+
+
 # dependencies
 node_modules
 Backend/node_modules
@@ -21,6 +31,7 @@ Backend/node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+
 
 npm-debug.log*
 yarn-debug.log*
