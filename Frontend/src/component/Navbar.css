@@ -45,3 +45,41 @@
 .non-transperent{
     color: rgb(69, 8, 8);
 }
+
+.dropdown{
+    display: inline-block;
+    margin-right: 50px;
+}
+.dropdown:hover{
+    color: var(--primary-color);
+    border-bottom: 5px  solid var(--primary-color);
+    transition: 150ms ease-in color;
+    transition: 150ms ease-in border;
+
+}
+a.dropdown-item{
+    width: fit-content;
+   
+}
+a.dropdown-item:hover{
+   background-color: transparent;
+   color: var(--cream-color);
+}
+
+#dropdown-basic{
+    background: transparent;
+    border:none;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: chivo;
+    color: var(--cream-color);
+}
+
+nav > div.links.transperent > div > div{
+    background-color:#f5eddc2e;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cream-color);
+
+   
+}
