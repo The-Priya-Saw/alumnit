@@ -5,7 +5,7 @@ import fs from "fs";
 
 
 const cookie = JSON.parse(fs.readFileSync("./cookie.json"));
-console.log(cookie)
+
 
 function getSearchURL(keyword){
     const urlEncoded = encodeURI(keyword);
@@ -13,9 +13,9 @@ function getSearchURL(keyword){
     return url;
 }
 
-const ExtractProfileURLs = async (name,headless=false) => {
+const ExtractProfileURLs = async (name,headless=true) => {
 
-    const browser = await puppeteer.launch({headless: true,userDataDir: './my/path'});
+    const browser = await puppeteer.launch({headless: headless,userDataDir: './my/path'});
     const page = await browser.newPage();
     
     await page.setCookie(cookie);

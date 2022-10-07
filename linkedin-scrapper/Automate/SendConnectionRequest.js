@@ -24,11 +24,11 @@ function createMessage(fullName){
 	return `Hello ${fullName},\nTesting automated connection request`;
 }
 
-const SendConnectionRequest = async (profiles,headless=false) => {
+const SendConnectionRequest = async (profiles,headless=true) => {
 
 	const response = {};
 	// Launch browser
-	const browser = await puppeteer.launch({headless: headless,userDataDir: './my/path'});
+	const browser = await puppeteer.launch({headless: false,userDataDir: './my/path'});
 
 	// Create a new page inside the browser
 	const page = await browser.newPage();

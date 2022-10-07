@@ -5,7 +5,6 @@ import fs from "fs";
 const cookie = JSON.parse(fs.readFileSync("./cookie.json"));
 const selectors = {
     profileImg: ".ph5.pb5 > .display-flex > div img",
-    checkConnection: ".ph5.pb5 .pvs-profile-actions .entry-point button svg ",
     fullName: ".ph5.pb5 > .mt2 h1",
     title: ".ph5.pb5 > .mt2 .text-body-medium",
     location: ".ph5.pb5 > .mt2 .pv-text-details__left-panel:last-child span.text-body-small",
@@ -19,9 +18,9 @@ const selectors = {
 }
 
 
-const ScrapeProfiles = async (profileURL,headless=false) => {
+const ScrapeProfiles = async (profileURL,headless=true) => {
     const profiles = [];
-    const browser = await puppeteer.launch({headless: true,userDataDir: './my/path'});
+    const browser = await puppeteer.launch({headless: headless,userDataDir: './my/path'});
     const page  = await browser.newPage();
     await page.setCookie(cookie);
     await page.setViewport({
@@ -75,13 +74,8 @@ const ScrapeProfiles = async (profileURL,headless=false) => {
             const date = $(li).find(selectors.education.date).text();
             educationItem.date = date;
             console.log(date);
-
-            const checkConnection = $(selectors.checkConnection);
-            console.log(checkConnection);
-            profile.isConnected = checkConnection.length == 1 ? false : true;
     
             profile.education.push(educationItem);
-
             console.log()
         });
     
