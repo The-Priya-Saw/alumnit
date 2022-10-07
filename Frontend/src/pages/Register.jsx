@@ -85,7 +85,7 @@ const Register = (props) => {
                 <input className="input-element" name="Email" type={"email"} placeholder="Enter Your Email" />
                 <input className="input-element" name="PassingYear" type={"number"} placeholder="Graduation Year" />
                 <input className="input-element" name="Password" type={"password"} placeholder="Enter Your Password" />
-                <button className="btnLogin">Login</button>
+                <button className="btnLogin">Register</button>
                 <div className="redirect-links">
                     <div>
                         <span>Already Have an Account? <a href="login">Login</a></span>
