@@ -7,6 +7,11 @@ const Register = (props) => {
     const [profilePicture, setProfilePicture] = useState();
     const handleSubmit = async (event) => {
         event.preventDefault();
+        
+        // Clear span errors
+        const errorSpans = document.querySelectorAll(".error");
+        errorSpans.forEach(x => x.innerHTML = "");
+
         const {
             FullName,
             JobTitle,
@@ -17,12 +22,12 @@ const Register = (props) => {
         } = event.target;
 
         const data = new FormData();
-        data.append("ProfilePicture",ProfilePicture.files[0]);
-        data.append("FullName",FullName.value);
-        data.append("JobTitle",JobTitle.value);
-        data.append("PassingYear",PassingYear.value);
-        data.append("Email",Email.value);
-        data.append("Password",Password.value);
+        data.append("ProfilePicture", ProfilePicture.files[0]);
+        data.append("FullName", FullName.value);
+        data.append("JobTitle", JobTitle.value);
+        data.append("PassingYear", PassingYear.value);
+        data.append("Email", Email.value);
+        data.append("Password", Password.value);
 
         const response = await fetch("http://localhost:3001/register", {
             method: "POST",
@@ -35,18 +40,23 @@ const Register = (props) => {
             //     ProfilePicture: "",
             //     Password: Password.value
             // })
+            credentials: 'include',
             body: data
         });
 
         if (response.status === 200) {
             const resJson = await response.json();
             alert("Successfully Registered");
-            console.log("Response: " + resJson);
+            console.log("Response: ");
+            console.log(resJson);
 
         } else {
             const resJson = await response.json();
-
-            alert(resJson.error);
+            for (var error in resJson.error) {
+                const span = document.querySelector(`.${error}.error`);
+                span.innerHTML = resJson.error[error];
+            }
+            console.log(resJson.error);
         }
 
     }
@@ -56,7 +66,7 @@ const Register = (props) => {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-               setProfilePicture({data: e.target.result, name: event.target.files[0].name});
+                setProfilePicture({ data: e.target.result, name: event.target.files[0].name });
             };
 
             reader.readAsDataURL(event.target.files[0]);
@@ -74,15 +84,34 @@ const Register = (props) => {
                     <h1>Register</h1>
                 </div>
                 <label className="lblUpload" for="inputImg">
-                    <img src={ profilePicture && profilePicture.data} className="imgProfile"></img>
+                    <img src={profilePicture && profilePicture.data} className="imgProfile"></img>
                     <span id="selectedImage">{profilePicture ? profilePicture.name : "Select a profile picture"}</span>
                 </label>
                 <input onChange={handleImageChange} name="ProfilePicture" id="inputImg" className="inputImg" type={"file"}></input>
-                <input className="input-element" name="FullName" type={"text"} placeholder="Full Name" />
-                <input className="input-element" name="JobTitle" type={"text"} placeholder="Title" />
-                <input className="input-element" name="Email" type={"email"} placeholder="Enter Your Email" />
-                <input className="input-element" name="PassingYear" type={"number"} placeholder="Graduation Year" />
-                <input className="input-element" name="Password" type={"password"} placeholder="Enter Your Password" />
+                <div>
+                    <input className="input-element" name="FullName" type={"text"} placeholder="Full Name" />
+                    <span className="error FullName"></span>
+                </div>
+                <div>
+                    <input className="input-element" name="JobTitle" type={"text"} placeholder="Title" />
+                    <span className="error JobTitle"></span>
+
+                </div>
+                <div>
+                    <input className="input-element" name="Email" type={"email"} placeholder="Enter Your Email" />
+                    <span className="error Email"></span>
+
+                </div>
+                <div>
+                    <input className="input-element" name="PassingYear" type={"number"} placeholder="Graduation Year" />
+                    <span className="error PassingYear"></span>
+
+                </div>
+                <div>
+                    <input className="input-element" name="Password" type={"password"} placeholder="Enter Your Password" />
+                    <span className="error Password"></span>
+
+                </div>
                 <button className="btnLogin">Register</button>
                 <div className="redirect-links">
                     <div>

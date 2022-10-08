@@ -9,30 +9,55 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Create JWT Tokens
 const createToken = (id) => {
-    return jwt.sign({id},process.env.SECRET_KEY,{
+    return jwt.sign({id},process.env.SECRET_KEY, {
         expiresIn: process.env.SECRET_KEY_MAX_AGE
     });
 }
 
+// handle errors
+const handleErrors = (err) => {
+    let errors = {};
+  
+    // duplicate email error
+    if (err.code === 11000) {
+      errors.Email = 'This Email is already registered';
+      return errors;
+    }
+  
+    // validation errors
+    if (err.message.includes('User validation failed')) {
+      Object.values(err.errors).forEach(({ properties }) => {
+        errors[properties.path] = properties.message;
+      });
+        
+    }
+  
+    return errors;
+  }
+
+
+
+
 const registerUser = async (req,res) => {
-    // try{
-    //     const User = await UserModel.create(req.body);
-    //     res.status(200).json(User);
-    // }catch(error){
-    //     res.status(400).json({error:error.message});
-    // }
     try {
         const {FullName,JobTitle,PassingYear,Email,Password} = req.body;
         const ProfilePicture = `${req.protocol}://${req.get('host')}/${req.file.path}`;
         console.log(ProfilePicture);
         console.log(req.body);
         const User = await UserModel.create({FullName,JobTitle,PassingYear,Email,Password,ProfilePicture});
-        
+        const token = createToken(User._id);
+        console.log(token);
+
+        // Send JWT token as a cookie
+        res.cookie("al_at",token,{maxAge: process.env.SECRET_KEY_MAX_AGE * 15,httpOnly: false});
         res.status(200).json(User);
 
-    } catch (error) {
-        res.status(400).json({error:error.message});
+    } catch (err) {
+        const errors = handleErrors(err)
+        console.log(err);
+        res.status(400).json({error: errors});
     }
 }
 

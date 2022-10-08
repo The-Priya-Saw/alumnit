@@ -54,6 +54,7 @@
 }
 
 .input-element{
+    width: 100%;
     background: transparent;
     border: none;
     border-bottom: 1px solid #1e1e1e7c;
@@ -125,4 +126,10 @@
     max-width: 200px;
 text-overflow: ellipsis;
 overflow: hidden;
+}
+
+.error{
+    color: rgba(235, 43, 43, 0.925);
+    font-size: 15px;
+    font-weight: 0;
 }
