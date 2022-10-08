@@ -30,6 +30,17 @@ const handleErrors = (err) => {
         return errors;
     }
 
+    
+    // Incorrect Email Login
+    if (err.message === "incorrect email"){
+        errors.Email = "incorrect email";
+    }
+
+    // Incorrect Password Login
+    if (err.message === "incorrect password"){
+        errors.Password = "incorrect password";
+    }
+
     // validation errors
     if (err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach(({ properties }) => {
@@ -84,15 +95,19 @@ const loginUser = async (req, res) => {
 
         } else { throw Error("incorrect email"); }
     } catch (error) {
-        console.log("Error Occured")
+        const errors = handleErrors(error);
         console.log(error);
-        res.status(403).json({ error: error });
+        res.status(403).json({ error: errors });
     }
 }
 
-// export default registerUser;
+const checkUser = async(req, res) => {
+
+}
+
 
 export {
     registerUser,
-    loginUser
+    loginUser,
+    checkUser
 };

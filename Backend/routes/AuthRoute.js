@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
-import {registerUser,loginUser} from "../controllers/AuthController.js";
+import requireAuth from "../middlewere/authMiddlewere.js";
+import {registerUser,loginUser, checkUser} from "../controllers/AuthController.js";
 import multer from "multer";
 import path from "path"
 
@@ -17,5 +18,7 @@ const profileUpload = multer({ storage: storage })
 
 router.post("/register",profileUpload.single("ProfilePicture"),registerUser);
 router.post("/login",loginUser);
+router.get("/checkUser",requireAuth,checkUser);
+
 
 export default router;

@@ -1,8 +1,9 @@
 import Navbar from "../component/Navbar";
 import "./Login.css";
 import logo from "../images/alumnit_logo.svg"
-const Login = (props) => {
+// import {Redirect } from 'react-router-dom';
 
+const Login = (props) => {
     const handleOnSubmit = async (event) => {
         event.preventDefault();
         // Clear span errors
@@ -21,13 +22,17 @@ const Login = (props) => {
             })
         });        
         if(loginResponse.status === 200){
-            alert("Logged In");
             const ResJson = await loginResponse.json();
             console.log(ResJson);
+            window.location = "/community";
         }else{
-            const ResJson = await loginResponse.json();
-            alert(ResJson.error);
-            console.log(ResJson);
+            const resJson = await loginResponse.json();
+            for (var error in resJson.error) {
+                const span = document.querySelector(`.${error}.error`);
+                span.innerHTML = resJson.error[error];
+            }
+            // alert(ResJson.error);
+            console.log(resJson);
         }
     }
 
