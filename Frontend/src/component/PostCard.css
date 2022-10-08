@@ -69,9 +69,20 @@
 
 .ActionButtons{
     /* background-color: rebeccapurple; */
+    border-top: 1px solid gray;
+    padding-top: 10px;
 }
 
 .ActionButtons *{
     /* background-color: rebeccapurple; */
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.ActionButtons *:hover{
+    background-color: rgba(156, 156, 156, 0.267);
 }

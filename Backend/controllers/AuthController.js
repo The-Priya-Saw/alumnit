@@ -30,14 +30,14 @@ const handleErrors = (err) => {
         return errors;
     }
 
-    
+
     // Incorrect Email Login
-    if (err.message === "incorrect email"){
+    if (err.message === "incorrect email") {
         errors.Email = "incorrect email";
     }
 
     // Incorrect Password Login
-    if (err.message === "incorrect password"){
+    if (err.message === "incorrect password") {
         errors.Password = "incorrect password";
     }
 
@@ -101,13 +101,29 @@ const loginUser = async (req, res) => {
     }
 }
 
-const checkUser = async(req, res) => {
+const logout = (req,res) => {
+    console.log("Log out", res.cookies);
+    res.cookie("al_at", "", { maxAge: 1, httpOnly: false });
+    
+    res.status(200).json({message:"logged out"});
+}
 
+const checkUser = async (req, res) => {
+    try {
+        const User = await UserModel.findById(req.decodedToken.id);
+        User.Password = "";
+        console.log("Checking user: " + req.decodedToken.id);
+        res.status(200).json({ User });
+    } catch (error) {
+        console.log(error.message);
+        res.status(403).json({error:error.message});
+    }
 }
 
 
 export {
     registerUser,
     loginUser,
-    checkUser
+    checkUser,
+    logout
 };

@@ -13,6 +13,7 @@ const Career = () => {
     const [posts, updatePosts] = useState([]);
     const [updateCount, setUpdateCount] = useState(0);
     const [isAuthenticated,setAuthenticated] = useState(false);
+    
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch("http://localhost:3001/careers/all",{
@@ -22,8 +23,24 @@ const Career = () => {
             const postsJson = await response.json();
             updatePosts(postsJson);
         }
+        const authenticate = async () => {
+            const response = await fetch("http://localhost:3001/checkUser",{
+                method: "GET",
+                credentials: "include"
+            });
+            const json = await response.json();
+            console.log(json);
+            if(response.status === 200){
+                setAuthenticated(true);
+            }
+        }
+        authenticate();
         fetchPosts();
     },[updateCount]);
+
+    const redirectToLogin = () => {
+        window.location = "/login";
+    }
     return ( 
         <div className="Career">
             <Navbar shadowNavbar={true}/>
@@ -42,7 +59,7 @@ const Career = () => {
                                 
                             }
                         </Popup>
-                        : ""
+                        : <button type="input" onClick={redirectToLogin}  id="btn-job-post"> Post Job / Internships</button>
                     }
                 </div>
                 <div className="divider"></div>

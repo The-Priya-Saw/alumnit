@@ -9,14 +9,15 @@ const requireAuth = (req, res, next) => {
                 console.log(err.message);
                 res.status(403).json({error:"token is not valid"});
             }else{
-                console.log(decodedToken);
+                console.log("Decoded token ",decodedToken);
+                req.decodedToken = decodedToken;
                 next();
             }
 
         });
     }else{
         console.log(req.cookies);
-        res.status(403).json({redirect:"/login"});
+        res.status(403).json({error:"not logged in"});
     }
 }
 
