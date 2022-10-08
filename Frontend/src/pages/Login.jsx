@@ -5,10 +5,16 @@ const Login = (props) => {
 
     const handleOnSubmit = async (event) => {
         event.preventDefault();
+        // Clear span errors
+        const errorSpans = document.querySelectorAll(".error");
+        errorSpans.forEach(x => x.innerHTML = "");
+
         const {Email, Password} = event.target;
         const loginResponse = await fetch("http://localhost:3001/login",{
             method:"POST",
             headers: {"Content-Type":"application/json"},
+            credentials: 'include',
+
             body: JSON.stringify({
                 Email: Email.value,
                 Password: Password.value
@@ -35,9 +41,14 @@ const Login = (props) => {
                 <div className="login_title">
                     <h1>Login</h1>
                 </div>
-                <input className="input-element" name="Email" type={"email"} placeholder="Enter Your Email" />
-                <input className="input-element" name="Password" type={"password"} placeholder="Enter Your Password" />
-                <button type="submit" className="btnLogin">Login</button>
+                <div>
+                    <input className="input-element" name="Email" type={"email"} placeholder="Enter Your Email" />
+                    <span className="error Email"></span>
+                </div>
+                <div>
+                    <input className="input-element" name="Password" type={"password"} placeholder="Enter Your Password" />
+                    <span className="error Password"></span>
+                </div>                <button type="submit" className="btnLogin">Login</button>
                 <div className="redirect-links">
                         <div>
                             <span>No Account? <a href="Register">Create One</a></span>

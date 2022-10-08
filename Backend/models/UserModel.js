@@ -38,4 +38,20 @@ UserModel.pre('save', async function(next) {
     next();
 })
 
+// // Login Method
+// UserModel.static.login = async function(Email, Password){
+//     console.log("Login")
+//     const user = await this.findOne({Email});
+//     // console.log(user);
+//     if(user){
+//         const auth = await bycrypt.compare(Password,user.Password);
+//         if(auth){
+//             return user;
+//         }
+//         throw Error("incorrect password")
+//     }
+//     throw Error("incorrect email");
+
+// }
+
 export default mongoose.model("User",UserModel);
