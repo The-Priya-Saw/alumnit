@@ -111,9 +111,23 @@
   
   #uploadPicture {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 16px;
+    color: var(--dark-text);
+    border: 1px solid var(--dark-text);
+    border-radius: 20px;
+    padding: 5px 15px;
+  }
+
+  #uploadPicture:hover{
+    background-color: var(--dark-text);
+    cursor: pointer;
+    color: white;
+  }
+
+  #uploadPicture span{
+    margin-left: 5px;
   }
   

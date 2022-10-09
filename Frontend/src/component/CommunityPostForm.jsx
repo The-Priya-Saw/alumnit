@@ -1,10 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 import "./CommunityPostForm.css";
 
 
 const CommnunityPostForm = (props) => {
   const currentUser = useContext(CurrentUserContext).state.User;
+  const [selectedImage, setSelectedImage] = useState();
+
+  const handleImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          setSelectedImage(e.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+const removeSelectedImage = (event) => {
+  event.preventDefault();
+  console.log(document.querySelector("#imageAttachment").files);
+  setSelectedImage(undefined);
+}
+
   console.log("CommunityPostForm",currentUser);
   return (
     <div className="cmfContainer">
@@ -28,10 +48,17 @@ const CommnunityPostForm = (props) => {
             id=""
             rows="5"
           ></textarea>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"/>
+          <img src={selectedImage}/>
         </div>
         <div className="actionButton">
-          <i id="uploadPicture" class="bi bi-image"></i>
+        
+          <input onChange={handleImageChange} type={"file"} hidden id="imageAttachment"></input>
+          {
+            !selectedImage ? 
+              <label for="imageAttachment" id="uploadPicture" class="bi bi-image"><span>Image</span></label>
+            : <label onClick={removeSelectedImage}>Remove Image</label>
+          }
+          
           <button id="btnPost">Post</button>
         </div>
       </div>
