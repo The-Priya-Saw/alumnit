@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 import "./CommunityPostForm.css";
 
+
 const CommnunityPostForm = (props) => {
+  const currentUser = useContext(CurrentUserContext).state.User;
+  console.log("CommunityPostForm",currentUser);
   return (
     <div className="cmfContainer">
       <div className="CommnunityPostForm">
@@ -10,19 +15,20 @@ const CommnunityPostForm = (props) => {
         </div>
         <div className="userDetail">
           <img
-            src="https://i.pinimg.com/736x/7b/bb/ef/7bbbef1aba33e4db581700e7cfebb1c4.jpg"
+            src={currentUser.ProfilePicture}
             alt=""
             id="userImage"
           />
-          <h3 className="username">Devi Vishwakumar</h3>
+          <h3 className="username">{currentUser.FullName}</h3>
         </div>
         <div className="writeContent">
           <textarea
             placeholder="What do you want to talk about ?"
             name=""
             id=""
-            rows="10"
+            rows="5"
           ></textarea>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"/>
         </div>
         <div className="actionButton">
           <i id="uploadPicture" class="bi bi-image"></i>

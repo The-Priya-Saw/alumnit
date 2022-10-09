@@ -30,6 +30,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
+    color: rgba(0,0,0,0.9);
   }
 
   .close{
@@ -45,12 +46,15 @@
   .CommnunityPostForm .username{
     font-size: 20px;
     margin: 0 10px;
+    color: rgba(0,0,0,0.9);
+
   }
   
   .CommnunityPostForm > * {
     /* width: 100%; */
-    border-bottom: 1px solid black;
-    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 16px 24px;
+
 
     /* padding: 10px; */
   }
@@ -75,17 +79,23 @@
   }
   
   .CommnunityPostForm .writeContent {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
+    display: block;
+    max-height: 300px;
+    overflow: auto;
   }
   
   .CommnunityPostForm .writeContent textarea {
     background-color: transparent;
-    resize: none;
+    resize: verticle;
     border: none;
     outline: none;
+    width: 100%;
+  }
+  
+  .CommnunityPostForm .writeContent img {
+    width: 100%;
+    border: 5px solid rgba(0,0,0,0.08);
+    border-radius: 10px;
   }
   
   .CommnunityPostForm .actionButton {

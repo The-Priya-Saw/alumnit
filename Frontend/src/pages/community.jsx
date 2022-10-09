@@ -4,7 +4,8 @@ import PostCard from "../component/PostCard";
 import CommunityPostButton from "../component/CommunityPostButton";
 import UserProfile from "../component/UserProfle";
 import "./Community.css"
-import { useState } from "react";
+import { useState, useContext } from "react";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 
 const json = [
     {
@@ -21,6 +22,7 @@ const json = [
 ]
 
 const Community =(props) =>{
+    const currentUser = useContext(CurrentUserContext);
     const [postArray,setPostArray] = useState([json[0]]);
     const addPost = (post) => {
         setPostArray();
@@ -31,7 +33,10 @@ const Community =(props) =>{
 
         <div className="communityContainer">
             <div className="communityPostContainer">
-                <CommunityPostButton/>
+                {
+                    currentUser.state ? <CommunityPostButton ProfilePicture={currentUser.state.User.ProfilePicture}/> : <h4>Login To Post</h4>
+                }
+                
             {
                 json.map(post => 
                     <PostCard

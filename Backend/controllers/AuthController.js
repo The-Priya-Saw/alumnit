@@ -66,7 +66,7 @@ const registerUser = async (req, res) => {
         console.log(token);
 
         // Send JWT token as a cookie
-        res.cookie("al_at", token, { maxAge: process.env.SECRET_KEY_MAX_AGE * 15, httpOnly: false });
+        res.cookie("al_at", token, { maxAge: process.env.SECRET_KEY_MAX_AGE, httpOnly: false });
         res.status(200).json({ user: User._id });
 
     } catch (err) {
@@ -87,8 +87,9 @@ const loginUser = async (req, res) => {
                 const token = createToken(User._id);
 
                 // Send JWT token as a cookie
-                res.cookie("al_at", token, { maxAge: process.env.SECRET_KEY_MAX_AGE * 15, httpOnly: false });
-                res.status(200).json({ user: User._id });
+                User.Password = undefined;
+                res.cookie("al_at", token, { maxAge: process.env.SECRET_KEY_MAX_AGE, httpOnly: false });
+                res.status(200).json({ user: User });
             } else {
                 throw Error("incorrect password");
             }
@@ -111,7 +112,7 @@ const logout = (req,res) => {
 const checkUser = async (req, res) => {
     try {
         const User = await UserModel.findById(req.decodedToken.id);
-        User.Password = "";
+        User.Password = undefined;
         console.log("Checking user: " + req.decodedToken.id);
         res.status(200).json({ User });
     } catch (error) {
