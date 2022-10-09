@@ -17,18 +17,44 @@ const CommnunityPostForm = (props) => {
 
         reader.readAsDataURL(event.target.files[0]);
     }
-}
+  }
 
-const removeSelectedImage = (event) => {
-  event.preventDefault();
-  console.log(document.querySelector("#imageAttachment").files);
-  setSelectedImage(undefined);
-}
+  const removeSelectedImage = (event) => {
+    event.preventDefault();
+    console.log(document.querySelector("#imageAttachment").files);
+    setSelectedImage(undefined);
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Extract TextContent and ImageContent from form
+    const {TextContent, ImageContent} = event.target
+
+    // Create Form Data to send with request
+    const data = new FormData();
+    data.append("ImageContent",ImageContent.files[0]);
+    data.append("TextContent",TextContent.value);
+    data.append("UserID", currentUser._id);
+    data.append("PostDate", Date.now());
+
+    try {
+      const PostResponse = await fetch("http://localhost:3001/community/createPost", {
+        method: "POST",
+        credentials: "include",
+        body: data
+      });
+      const ResponseJson = await PostResponse.json();
+      console.log("Post:", ResponseJson);
+    } catch (error) {
+      
+    }
+  }
 
   console.log("CommunityPostForm",currentUser);
   return (
     <div className="cmfContainer">
-      <div className="CommnunityPostForm">
+      <form onSubmit={handleSubmit} className="CommnunityPostForm">
         <div className="formHeader">Create Post
           <a className="close bi bi-x-square" onClick={props.close}>
           </a>
@@ -44,7 +70,7 @@ const removeSelectedImage = (event) => {
         <div className="writeContent">
           <textarea
             placeholder="What do you want to talk about ?"
-            name=""
+            name="TextContent"
             id=""
             rows="5"
           ></textarea>
@@ -52,16 +78,16 @@ const removeSelectedImage = (event) => {
         </div>
         <div className="actionButton">
         
-          <input onChange={handleImageChange} type={"file"} hidden id="imageAttachment"></input>
+          <input name="ImageContent" onChange={handleImageChange} type={"file"} hidden id="imageAttachment"></input>
           {
             !selectedImage ? 
               <label for="imageAttachment" id="uploadPicture" class="bi bi-image"><span>Image</span></label>
             : <label onClick={removeSelectedImage}>Remove Image</label>
           }
           
-          <button id="btnPost">Post</button>
+          <button type="submit" id="btnPost">Post</button>
         </div>
-      </div>
+      </form>
     </div>
 
   );

@@ -1,13 +1,14 @@
 import express from "express";
 import multer from "multer";
 import path from "path"
+import { addEvent, getUpcomingEvents, getPastEvents, getAllEvents} from "../controllers/EventController.js";
+import requireAuth from "../middlewere/authMiddlewere.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import { addEvent, getUpcomingEvents, getPastEvents, getAllEvents} from "../controllers/EventController.js";
 const router = express.Router();
 
 var storage = multer.diskStorage({
@@ -20,7 +21,7 @@ var storage = multer.diskStorage({
   })
 const eventUpload = multer({ storage: storage })
 
-router.post("/add",eventUpload.single("EventImage"),addEvent);
+router.post("/add",[requireAuth,eventUpload.single("EventImage")],addEvent);
 router.get("/upcoming",getUpcomingEvents);
 router.get("/past",getPastEvents);
 router.get("/all",getAllEvents);

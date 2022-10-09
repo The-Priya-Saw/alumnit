@@ -31,7 +31,8 @@ const EventPostForm = (props) => {
             //         Description: Description.value, 
             //         ApplyLink: ApplyLink.value
             //     }
-            // )
+            // ),
+            credentials: "include",
             body: data
         });
         const resJson = await EventResponse.json();

@@ -10,6 +10,7 @@ import UserModel from "./models/UserModel.js";
 import AuthRoutes from "./routes/AuthRoute.js";
 import EventRoutes from "./routes/EventRoute.js";
 import CareersRoute from "./routes/CareersRoute.js";
+import CommunityRoutes from "./routes/CommunityRoutes.js"; 
 import cookieParser from "cookie-parser";
 
 
@@ -40,6 +41,7 @@ app.use(cookieParser());
 app.use(AuthRoutes);
 app.use("/events",EventRoutes);
 app.use("/careers",CareersRoute);
+app.use("/community",CommunityRoutes);
 
 
 app.get("/",(req,res)=>{

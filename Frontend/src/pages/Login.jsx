@@ -29,7 +29,7 @@ const Login = (props) => {
             const ResJson = await loginResponse.json();
             console.log(ResJson);
             currentUser.setState(ResJson);
-            // window.location = "/community";
+            window.location = "/community";
         }else{
             const resJson = await loginResponse.json();
             for (var error in resJson.error) {

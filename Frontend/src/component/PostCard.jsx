@@ -10,7 +10,7 @@ const DefaultComponent = () => {
       {
         userId: '02b',
         comId: '017',
-        fullName: 'Lily',
+        fullName: 'Priya',
         userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
         text: 'I think you have a point🤔',
         avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
@@ -21,10 +21,10 @@ const DefaultComponent = () => {
           currentUser={{
             currentUserId: '01a',
             currentUserImg:
-              'https://ui-avatars.com/api/name=Riya&background=random',
+              'http://localhost:3001/public/profile/1665232324971.jpg',
             currentUserProfile:
-              'https://www.linkedin.com/in/riya-negi-8879631a9/',
-            currentUserFullName: 'Riya Negi'
+              'http://localhost:3001/public/profile/1665232324971.jpg/',
+            currentUserFullName: 'Lokesh Patil'
           }}
           logIn={{
             loginLink: 'http://localhost:3001/',
