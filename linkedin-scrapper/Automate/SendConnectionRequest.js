@@ -20,12 +20,19 @@ const selectors = {
 const cookie = JSON.parse(fs.readFileSync("./cookie.json"));
 
 
-function createMessage(fullName){
-	return `Hello ${fullName},\nTesting automated connection request`;
-}
 
-const SendConnectionRequest = async (profiles,headless=true) => {
 
+const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => {
+	function createMessage(fullName){
+		if(messageTemplate){
+			let splitedMessage =  messageTemplate.split("#$");
+			if(splitedMessage.length > 1){
+				splitedMessage[1] = fullName;
+			}
+			return splitedMessage.join("");
+		}
+		return `Hello ${fullName},\nTesting automated connection request`;
+	}
 	const response = {};
 	// Launch browser
 	const browser = await puppeteer.launch({headless: false,userDataDir: './my/path'});

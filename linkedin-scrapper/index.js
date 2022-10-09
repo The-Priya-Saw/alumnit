@@ -23,9 +23,10 @@ app.post("/getProfiles",async (req,res) => {
 app.post("/invite", async (req,res)=>{
    try {
     const profiles = req.body.profiles;
+    const messageTemplate = req.body.messageTemplate;
     console.log(profiles);
 
-    const response = await SendConnectionRequest(profiles,false);
+    const response = await SendConnectionRequest(profiles,messageTemplate,false);
     res.status(200).json(response);
    } catch (error) {
     res.status(400).json(error);
