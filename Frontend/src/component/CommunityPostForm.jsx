@@ -1,6 +1,31 @@
+import { useContext, useState } from "react";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 import "./CommunityPostForm.css";
 
+
 const CommnunityPostForm = (props) => {
+  const currentUser = useContext(CurrentUserContext).state.User;
+  const [selectedImage, setSelectedImage] = useState();
+
+  const handleImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          setSelectedImage(e.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+const removeSelectedImage = (event) => {
+  event.preventDefault();
+  console.log(document.querySelector("#imageAttachment").files);
+  setSelectedImage(undefined);
+}
+
+  console.log("CommunityPostForm",currentUser);
   return (
     <div className="cmfContainer">
       <div className="CommnunityPostForm">
@@ -10,22 +35,30 @@ const CommnunityPostForm = (props) => {
         </div>
         <div className="userDetail">
           <img
-            src="https://i.pinimg.com/736x/7b/bb/ef/7bbbef1aba33e4db581700e7cfebb1c4.jpg"
+            src={currentUser.ProfilePicture}
             alt=""
             id="userImage"
           />
-          <h3 className="username">Devi Vishwakumar</h3>
+          <h3 className="username">{currentUser.FullName}</h3>
         </div>
         <div className="writeContent">
           <textarea
             placeholder="What do you want to talk about ?"
             name=""
             id=""
-            rows="10"
+            rows="5"
           ></textarea>
+          <img src={selectedImage}/>
         </div>
         <div className="actionButton">
-          <i id="uploadPicture" class="bi bi-image"></i>
+        
+          <input onChange={handleImageChange} type={"file"} hidden id="imageAttachment"></input>
+          {
+            !selectedImage ? 
+              <label for="imageAttachment" id="uploadPicture" class="bi bi-image"><span>Image</span></label>
+            : <label onClick={removeSelectedImage}>Remove Image</label>
+          }
+          
           <button id="btnPost">Post</button>
         </div>
       </div>

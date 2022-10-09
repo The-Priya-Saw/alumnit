@@ -1,9 +1,13 @@
 import Navbar from "../component/Navbar";
 import "./Login.css";
 import logo from "../images/alumnit_logo.svg"
+import { useContext } from "react";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 // import {Redirect } from 'react-router-dom';
 
 const Login = (props) => {
+    const currentUser = useContext(CurrentUserContext);
+    console.log(currentUser);
     const handleOnSubmit = async (event) => {
         event.preventDefault();
         // Clear span errors
@@ -24,7 +28,8 @@ const Login = (props) => {
         if(loginResponse.status === 200){
             const ResJson = await loginResponse.json();
             console.log(ResJson);
-            window.location = "/community";
+            currentUser.setState(ResJson);
+            // window.location = "/community";
         }else{
             const resJson = await loginResponse.json();
             for (var error in resJson.error) {

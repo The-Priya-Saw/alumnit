@@ -4,9 +4,10 @@ import PostCard from "../component/PostCard";
 import CommunityPostButton from "../component/CommunityPostButton";
 import UserProfile from "../component/UserProfle";
 import "./Community.css"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Popup from "reactjs-popup";
 import ProfileEditForm from "../component/ProfileEditForm";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 
 const json = [
     {
@@ -23,6 +24,7 @@ const json = [
 ]
 
 const Community = (props) => {
+    const currentUser = useContext(CurrentUserContext);
     const [postArray, setPostArray] = useState([json[0]]);
     const addPost = (post) => {
         setPostArray();
@@ -31,6 +33,7 @@ const Community = (props) => {
         <div className="Community">
             <Navbar shadowNavbar={true} />
 
+        <div className="communityContainer">
             <div className="communityContainer">
                 <div className="communityProfileContainer">
                     <div className="Profile">
@@ -73,20 +76,24 @@ const Community = (props) => {
 
                     </div>
                 </div>
-                <div className="communityPostContainer">
-                    <CommunityPostButton />
-                    {
-                        json.map(post =>
-                            <PostCard
-                                profileImage={post.profileImage}
-                                username={post.username}
-                                description={post.description}
-                                postImage={post.postImage}
-                            />
-                        )
-                    }
                 </div>
+            <div className="communityPostContainer">
+                {
+                    currentUser.state ? <CommunityPostButton ProfilePicture={currentUser.state.User.ProfilePicture}/> : <h4>Login To Post</h4>
+                }
+                
+            {
+                json.map(post => 
+                    <PostCard
+                        profileImage={post.profileImage}
+                        username={post.username}
+                        description={post.description}
+                        postImage={post.postImage}
+                    />
+                )
+            }
             </div>
+        </div>
 
         </div>
 
