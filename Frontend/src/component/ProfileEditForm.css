@@ -1,0 +1,35 @@
+
+  
+.ProfileEditForm .form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8;
+  }
+  
+  .ProfileEditForm .profile-button {
+    background: #BA68C8;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .ProfileEditForm .profile-button:hover {
+    background: #682773;
+  }
+  
+  .ProfileEditForm .profile-button:focus {
+    background: #682773;
+    box-shadow: none;
+  }
+  
+  .ProfileEditForm .profile-button:active {
+    background: #682773;
+    box-shadow: none;
+  }
+  
+  .ProfileEditForm .back:hover {
+    color: #682773;
+    cursor: pointer;
+  }
+
+  .ProfileEditForm .container{
+    height:auto;
+  }

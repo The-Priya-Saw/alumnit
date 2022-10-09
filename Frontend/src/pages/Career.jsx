@@ -4,6 +4,7 @@ import JobCard from "../component/JobCard.jsx";
 import CustomPostForm from "../component/CareerPostForm.jsx";
 import Footer from "../component/Footer.jsx";
 
+
 import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 
