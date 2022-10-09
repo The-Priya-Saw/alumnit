@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
 import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
+import CommunityPostsContext from "../context/CommunityPost/CommunityPostsContext";
+
 import "./CommunityPostForm.css";
 
 
 const CommnunityPostForm = (props) => {
   const currentUser = useContext(CurrentUserContext).state.User;
+  const {CommunityPostList, updateCommunityPostList} = useContext(CommunityPostsContext);
+
   const [selectedImage, setSelectedImage] = useState();
 
   const handleImageChange = (event) => {
@@ -45,7 +49,21 @@ const CommnunityPostForm = (props) => {
         body: data
       });
       const ResponseJson = await PostResponse.json();
-      console.log("Post:", ResponseJson);
+      if(PostResponse.status === 200){
+        updateCommunityPostList(prev => {
+          const postObject = {
+            ImageContent: ResponseJson.ImageContent,
+            PostDate: ResponseJson.PostDate,
+            TextContent: ResponseJson.TextContent,
+            UserID: ResponseJson.UserID,
+            Username: currentUser.FullName,
+            ProfilePicture: currentUser.ProfilePicture
+          }
+          return [postObject,...prev];
+        });
+        props.close();
+        alert("Posted");
+      }
     } catch (error) {
       
     }

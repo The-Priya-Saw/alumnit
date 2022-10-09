@@ -129,3 +129,6 @@
     overflow-y: auto;
 }
 
+.profilePic{
+  height: 50px;
+}

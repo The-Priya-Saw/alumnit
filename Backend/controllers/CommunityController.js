@@ -29,7 +29,7 @@ const getAllCommunityPosts = async (req,res) => {
             Posts[i]._doc["ProfilePicture"] = User.ProfilePicture;
             newPosts.push(Posts[i]._doc);
         }
-        res.status(200).json(newPosts);
+        res.status(200).json(newPosts.reverse());
     } catch (error) {
         res.status(403).json(error);
     } 

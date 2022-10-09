@@ -8,11 +8,13 @@ import { useState, useContext, useEffect } from "react";
 import Popup from "reactjs-popup";
 import ProfileEditForm from "../component/ProfileEditForm";
 import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
+import CommunityPostsContext from "../context/CommunityPost/CommunityPostsContext";
 
 
 const Community = (props) => {
     const currentUser = useContext(CurrentUserContext);
-    const [postArray, setPostArray] = useState([]);
+    // const [postArray, setPostArray] = useState([]);
+    const {CommunityPostList, updateCommunityPostList} = useContext(CommunityPostsContext);
     
     useEffect(() => {
         const fetchPosts = async () => {
@@ -23,8 +25,8 @@ const Community = (props) => {
             if(postsResponse.status === 200){
                 const resJson = await postsResponse.json();
                 console.log(resJson);
-                setPostArray(resJson);
-                // console.log("Post Array:",postArray);
+                updateCommunityPostList(resJson);
+                console.log("Post Array:",CommunityPostList);
             }
             
         };
@@ -85,7 +87,7 @@ const Community = (props) => {
                 }
                 
             {
-                postArray.map(post => 
+                CommunityPostList.map(post => 
                     <PostCard
                         profileImage={post.ProfilePicture}
                         username={post.Username}

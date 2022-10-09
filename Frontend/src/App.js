@@ -10,6 +10,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import { useEffect } from 'react';
 import { useContext } from "react";
 import CurrentUserContext from "./context/LoggedInUser/CurrentUserContext.js";
+import CommunityPostsState from "./context/CommunityPost/CommunityPostsState";
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
             <Route path='/' element={<Home/>}/>
             <Route path='/career' element={<Career/>}/>
             <Route path='event' element={<Event/>}/>
-            <Route path='community' element={<Community/>}/>
+            <Route path='community' element={<CommunityPostsState><Community/></CommunityPostsState> }/>
             <Route path='Login' element={<Login/>}/>
             <Route path='Register' element={<Register/>}/>
 
