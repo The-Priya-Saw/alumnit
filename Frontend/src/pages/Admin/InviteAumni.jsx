@@ -104,7 +104,7 @@ const InviteAlumni = (props) => {
                 </div>
 
                 <div className="DisplayAlumni">
-                    {resultProfiles[0] ? <AlumniProfile profile={dummy[0]}/> : ""}
+                    {dummy[0] ? <AlumniProfile profile={dummy[0]}/> : ""}
                     
                 </div>
 

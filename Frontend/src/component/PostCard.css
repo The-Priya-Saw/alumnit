@@ -76,6 +76,8 @@
 .ActionButtons *{
     /* background-color: rebeccapurple; */
     /* margin-right: 10px; */
+    background-color: transparent;
+    border: none;
     padding: 10px;
     width: 100%;
     text-align: center;
@@ -84,5 +86,40 @@
 }
 
 .ActionButtons *:hover{
-    background-color: rgba(156, 156, 156, 0.267);
+    background-color: rgba(185, 185, 185, 0.267);
 }
+
+/* Comment Section */
+.overlay{
+    padding: 5px 22px;
+    max-height: 300px;
+    overflow-y: auto;
+    /* background-color: red; */
+}
+
+span.comment-title{
+    font-size: 16px;
+}
+
+.overlay form{
+    padding: 10px;
+}
+
+.overlay form img{
+    width: 30px;
+    height: 30px;
+}
+
+.postComment{
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.form .postBtn{
+    font-size: 14px;
+}
+
+.emoji-input .emoji-icon {
+    top: 7px;
+}
+
