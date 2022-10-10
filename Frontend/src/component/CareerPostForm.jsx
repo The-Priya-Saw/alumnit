@@ -19,6 +19,7 @@ const CareerPostForm = (props) => {
     const CareerPostResponse = await fetch("http://localhost:3001/careers/create", {
       method: "POST",
       headers: {"Content-Type":"application/json"},
+      credentials: "include",
       body: JSON.stringify({
         Type: Type.value,
         Title: Title.value,

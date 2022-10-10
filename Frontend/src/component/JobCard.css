@@ -13,6 +13,14 @@
     font-size: 20px;
 }
 
+.JobCard a{
+    color: var(--primary-color);
+}
+
+.JobCard a:hover{
+    color: var(--primary-color);
+}
+
 .JobCard .JobTitle {
 
    font-size: 24px;
