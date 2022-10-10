@@ -88,7 +88,7 @@ const InviteAlumni = (props) => {
                         <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button>
                     </div>
                     <div className="searchResults">
-                        {dummy.map((profile, index) =>{
+                        {resultProfiles.map((profile, index) =>{
                             return <AlumniShortProfile
                                 key={index}
                                 index={index}

@@ -3,21 +3,25 @@ import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reactjs-popup/dist/index.css";
 import "./ProfileEditForm.css";
+import { useContext } from "react";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 
 
 const ProfileEditForm = (props) => {
-
+    const { state, setState } = useContext(CurrentUserContext);
     return (
 
 
         <div class="ProfileEditForm container rounded bg-white mt-5" style={{
             maxWidth: "500px"
         }}>
-                   <a className="close bi bi-x-square" style={{textAlign: "end"}} onClick={props.close}>
-          </a>
+            <a className="close bi bi-x-square" style={{ textAlign: "end" }} onClick={props.close}>
+            </a>
             <div class="row">
                 <div class="col-md border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><input type="file" class="form-control"></input><img class="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width="90"></img>
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <input type="file" class="form-control"></input>
+                        <img class="rounded-circle mt-5" src={state.User.ProfilePicture} width="90"></img>
                         <input type="text" class="form-control" placeholder="Enter your Full Name"></input>
                         <input type="text" class="form-control" placeholder="Enter title"></input>
                     </div>
@@ -30,7 +34,7 @@ const ProfileEditForm = (props) => {
 
                             </div>
 
-                    
+
                             <div class="row mt-2">
 
                                 <h4>Education</h4><br />
@@ -41,19 +45,19 @@ const ProfileEditForm = (props) => {
 
                             <div class="row mt-2">
 
-                            <h4>Linkedln profile link</h4><br/>
-                            <input type="text" class="form-control" placeholder="Enter the url" value="" />
+                                <h4>Linkedln profile link</h4><br />
+                                <input type="text" class="form-control" placeholder="Enter the url" value="" />
                             </div>
 
-                            
+
                             <div class="row mt-2">
 
-                            <h4>Github Profile link</h4><br/>
-                            <input type="text" class="form-control" placeholder="Enter the url" value="" />
+                                <h4>Github Profile link</h4><br />
+                                <input type="text" class="form-control" placeholder="Enter the url" value="" />
                             </div>
 
 
-                            
+
                         </div>
                     </div>
 
