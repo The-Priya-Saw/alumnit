@@ -25,8 +25,8 @@ export default [
         ]
     },
     {
-        "url": "https://www.linkedin.com/in/priya-ranjane",
-        "fullName": "Priya Ranjane",
+        "url": "https://www.linkedin.com/in/nishant-kuthe-82b38b195",
+        "fullName": "Nishant Kuthe",
         "profileImg": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
         "title": "Process engineer at Petrofac",
         "location": "Mumbai, Maharashtra, India",
