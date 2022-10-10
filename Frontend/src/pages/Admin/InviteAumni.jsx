@@ -4,9 +4,11 @@ import "./InviteAlumni.css";
 import AlumniShortProfile from "../../component/admin/AlumniShortProfile";
 import AlumniProfile from "../../component/admin/AlumniProfile";
 import dummy from "./dummy";
+import Popup from "reactjs-popup";
+import CustomPostForm from "../../component/CareerPostForm.jsx";
+
 
 const InviteAlumni = (props) => {
-    //TODO: Implement toggle send button when no item is selected
     const [searchTerm,setSearchTerm] = useState("");//Hold search term
     const [isSelected,setSelected] = useState();//To toggle send button
     const [selectionArray, updateSelectionArray] = useState([]);//e.g[true,false,false]
@@ -44,19 +46,21 @@ const InviteAlumni = (props) => {
 
     const onClickSend = async (e) => {
         console.log(selectedProfiles);
-        try {
-            const res = await fetch("http://localhost:3002/invite",{
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    profiles: selectedProfiles
-                })
-            })
-            console.log(await res.json())
-            alert("done");
-        } catch (error) {
-            alert(error)
-        }
+
+        // TODO
+        // try {
+        //     const res = await fetch("http://localhost:3002/invite",{
+        //         method: "POST",
+        //         headers: {"Content-Type": "application/json"},
+        //         body: JSON.stringify({
+        //             profiles: selectedProfiles
+        //         })
+        //     })
+        //     console.log(await res.json())
+        //     alert("done");
+        // } catch (error) {
+        //     alert(error)
+        // }
     }
 
     const handleCheckbox = (e, props) => {
@@ -85,7 +89,14 @@ const InviteAlumni = (props) => {
                     <div className="divSearchBox">
                         <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search" />
                         <button onClick={onSearch} id="btnSearch">Search</button>
-                        <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button>
+                        {/* <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button> */}
+                        <Popup trigger={<button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button>} modal>
+                            {/* <CustomPostForm updatePage={setUpdateCount}/> */}
+                            {
+                                close => <InviteNote close={close}/>
+                                
+                            }
+                        </Popup>
                     </div>
                     <div className="searchResults">
                         {dummy.map((profile, index) =>{
@@ -112,4 +123,16 @@ const InviteAlumni = (props) => {
         </div>
     );
 }
+
+const InviteNote = (props) => {
+    return <div className="InviteNote">
+              <a className="close bi bi-x-square" style={{textAlign: "end"}} onClick={props.close}>
+          </a>
+        <h5>Invite Note</h5>
+        <p>Max 285 characters and use %#f%# for replacing full name</p>
+        <textarea maxLength="285"></textarea>
+        <button id="btnInviteNoteSend">Send</button>
+    </div>
+}
+
 export default InviteAlumni;
