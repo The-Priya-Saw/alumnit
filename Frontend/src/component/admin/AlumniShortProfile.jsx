@@ -2,7 +2,10 @@ import "./AlumniShortProfile.css";
 
 const AlumniShortProfile = (props) => {
     const profile = props.profile;
-    return <div className="AlumniShortProfile">
+    const handleClick = () => {
+        props.selectedProfile.setViewSelectedProfile(profile)
+    }
+    return <div onClick={handleClick} className="AlumniShortProfile">
         <input onChange={e => props.handleCheckbox(e, props)} name="selected" type="checkbox"/>
         <div className="alumniShortProfileDetail">
             <img className="alumniProfilePicture" src={profile.profileImg}/>

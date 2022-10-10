@@ -1,7 +1,7 @@
 export default [
     {
-        "url": "https://www.linkedin.com/in/priya-saw-875476209",
-        "fullName": "Priya Saw",
+        "url": "https://www.linkedin.com/in/priya-saw-4794a6157/",
+        "fullName": "Priya Xavier",
         "profileImg": "https://media-exp1.licdn.com/dms/image/C4D03AQEhZ9WRN6X7nA/profile-displayphoto-shrink_200_200/0/1661583518580?e=1668643200&v=beta&t=fOwj6HgZWnZuwqv7W3RIW4ssdMtQWpSZyz3vFOdjFPY",
         "title": "IT Engineering' 24 | BVPCOE | VJTI",
         "location": "Mumbai, Maharashtra, India",
@@ -46,8 +46,8 @@ export default [
         ]
     },
     {
-        "url": "https://www.linkedin.com/in/lokesh-patil-77221a24a/",
-        "fullName": "Priya Johnbalan",
+        "url": "https://www.linkedin.com/in/sanchit-mhase-188303216/",
+        "fullName": "Sanchit Mhase",
         "profileImg": "https://media-exp1.licdn.com/dms/image/C5103AQHSoFnK1InnVg/profile-displayphoto-shrink_200_200/0/1546005210895?e=1668643200&v=beta&t=umWpDyJryLwSyouElfBK7eT54SPMqgvyPiOMc5W9G9c",
         "title": "Embedded Software Engineer at Millennium Technologies",
         "location": "Mumbai, Maharashtra, India",

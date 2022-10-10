@@ -93,6 +93,7 @@
     padding: 20px;
     margin: auto;
     border-radius: 10px;
+    position: relative;
 }
 
 
@@ -108,6 +109,7 @@
 }
 
 .InviteNote textarea{
+    resize: none;
     font-size: 16px;
     padding: 10px;
     border: none;
@@ -115,6 +117,13 @@
     background-color: #ffffffd0;
     border: 5px solid #a09f9fc5;
     border-radius: 10px;
+}
+
+.InviteNote a {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+    font-size: 28px;
 }
 
 #btnInviteNoteSend{

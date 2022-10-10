@@ -14,6 +14,7 @@ const InviteAlumni = (props) => {
     const [selectionArray, updateSelectionArray] = useState([]);//e.g[true,false,false]
     const [selectedProfiles, updateSelectedProfiles] = useState([]);
     const [resultProfiles, setResultProfiles] = useState([]);
+    const [viewSelectedProfile, setViewSelectedProfile] = useState(undefined);
 
     const onSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
@@ -45,22 +46,34 @@ const InviteAlumni = (props) => {
     }
 
     const onClickSend = async (e) => {
+        e.preventDefault();
         console.log(selectedProfiles);
+        const messageTemplate = e.target.messageTemplate.value;
+        try {
+            const res = await fetch("http://localhost:3002/invite",{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    profiles: selectedProfiles,
+                    messageTemplate: messageTemplate
+                })
+            })
+            console.log(await res.json())
+            alert("done");
+        } catch (error) {
+            alert(error)
+        }
+    }
 
-        // TODO
-        // try {
-        //     const res = await fetch("http://localhost:3002/invite",{
-        //         method: "POST",
-        //         headers: {"Content-Type": "application/json"},
-        //         body: JSON.stringify({
-        //             profiles: selectedProfiles
-        //         })
-        //     })
-        //     console.log(await res.json())
-        //     alert("done");
-        // } catch (error) {
-        //     alert(error)
-        // }
+    const InviteNote = (props) => {
+        return <form onSubmit={onClickSend} className="InviteNote">
+                  <a className="close bi bi-x-square" style={{textAlign: "end"}} onClick={props.close}>
+              </a>
+            <h5>Invite Note</h5>
+            <p>Max 285 characters and use #$ for replacing full name</p>
+            <textarea name="messageTemplate" rows={4} maxLength="285"></textarea>
+            <button id="btnInviteNoteSend">Send</button>
+        </form>
     }
 
     const handleCheckbox = (e, props) => {
@@ -90,7 +103,7 @@ const InviteAlumni = (props) => {
                         <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search" />
                         <button onClick={onSearch} id="btnSearch">Search</button>
                         {/* <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button> */}
-                        <Popup trigger={<button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button>} modal>
+                        <Popup trigger={<button  disabled={!isSelected} id="btnSend">Send</button>} modal>
                             {/* <CustomPostForm updatePage={setUpdateCount}/> */}
                             {
                                 close => <InviteNote close={close}/>
@@ -106,6 +119,7 @@ const InviteAlumni = (props) => {
                                 handleCheckbox={handleCheckbox}
                                 college="BVCOENM 2019 - 2021"
                                 profile={profile}
+                                selectedProfile={{viewSelectedProfile, setViewSelectedProfile}}
                             />
                         }
                             
@@ -115,7 +129,7 @@ const InviteAlumni = (props) => {
                 </div>
 
                 <div className="DisplayAlumni">
-                    {dummy[0] ? <AlumniProfile profile={dummy[0]}/> : ""}
+                    { viewSelectedProfile ? <AlumniProfile profile={viewSelectedProfile}/> : "" }
                     
                 </div>
 
@@ -124,15 +138,6 @@ const InviteAlumni = (props) => {
     );
 }
 
-const InviteNote = (props) => {
-    return <div className="InviteNote">
-              <a className="close bi bi-x-square" style={{textAlign: "end"}} onClick={props.close}>
-          </a>
-        <h5>Invite Note</h5>
-        <p>Max 285 characters and use %#f%# for replacing full name</p>
-        <textarea maxLength="285"></textarea>
-        <button id="btnInviteNoteSend">Send</button>
-    </div>
-}
+
 
 export default InviteAlumni;

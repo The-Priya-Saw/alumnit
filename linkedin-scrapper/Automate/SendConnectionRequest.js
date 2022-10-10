@@ -27,9 +27,8 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 		if(messageTemplate){
 			let splitedMessage =  messageTemplate.split("#$");
 			if(splitedMessage.length > 1){
-				splitedMessage[1] = fullName;
+				return splitedMessage[0] + fullName + splitedMessage[1];
 			}
-			return splitedMessage.join("");
 		}
 		return `Hello ${fullName},\nTesting automated connection request`;
 	}
