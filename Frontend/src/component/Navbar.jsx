@@ -28,23 +28,21 @@ const Navbar = (props) => {
     window.location.reload();
   }
   return (
-    <nav class="navbar">
+    <nav class={!props.isShadowNavbar ? "navbar shadowNavbar" : "navbar"}>
       <div className="brandLogo">
         <img className="bvp_logo" src={bvp_logo} />
       </div>
       <div className={"links " + (props.isTransperent ? "transperent" : "non-transperent")} >
         <a href="/">Home</a>
-        {
-          props.isAdmin ? <a href="/admin/inviteAlumni">Invite Alumni</a> : null
-        }
+
         <a href="/community">Community</a>
         <a href="/event">Events</a>
         <a href="/career">Career</a>
         {
-          loggedInUser && Object.keys(loggedInUser).length > 0 ? <a onClick={logout} id="logout">Log out</a> : <a href="login">Login</a>
+          loggedInUser && Object.keys(loggedInUser).length > 0 ? <a onClick={logout} id="logout">Log out</a> : !props.isAdmin ? <a href="login">Login</a> : ""
         }
         {
-          userIsAdmin &&
+          props.isAdmin &&
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
               Admin

@@ -70,7 +70,8 @@ a.dropdown-item{
 }
 a.dropdown-item:hover{
    background-color: transparent;
-   color: var(--cream-color);
+   color: rgb(69, 8, 8);
+   /* color: var(--cream-color); */
 }
 
 #dropdown-basic{
@@ -79,14 +80,14 @@ a.dropdown-item:hover{
     font-weight: bold;
     font-size: 24px;
     font-family: chivo;
-    color: var(--cream-color);
+    color: rgb(69, 8, 8);
 }
 
 nav > div.links.transperent > div > div{
     background-color:#f5eddc2e;
     font-size: 24px;
     font-weight: bold;
-    color: var(--cream-color);
+    color: rgb(69, 8, 8);
 
    
 }

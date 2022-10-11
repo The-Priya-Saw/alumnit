@@ -74,7 +74,7 @@ const Register = (props) => {
     }
 
     return <div className="Login">
-        <Navbar isTransperent={true} />
+        <Navbar isTransperent={true} isShadowNavbar={true}/>
         <div className="login_container">
             <form onSubmit={handleSubmit}>
                 <div className="logo">

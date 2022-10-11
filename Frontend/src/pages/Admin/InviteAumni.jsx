@@ -100,7 +100,7 @@ const InviteAlumni = (props) => {
 
                 <div className="SearchAlumni">
                     <div className="divSearchBox">
-                        <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search" />
+                        <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search name" />
                         <button onClick={onSearch} id="btnSearch">Search</button>
                         {/* <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button> */}
                         <Popup trigger={<button  disabled={!isSelected} id="btnSend">Send</button>} modal>
@@ -112,7 +112,8 @@ const InviteAlumni = (props) => {
                         </Popup>
                     </div>
                     <div className="searchResults">
-                        {resultProfiles.map((profile, index) =>{
+                        {
+                        resultProfiles.length > 0 ? resultProfiles.map((profile, index) =>{
                             return <AlumniShortProfile
                                 key={index}
                                 index={index}
@@ -123,13 +124,13 @@ const InviteAlumni = (props) => {
                             />
                         }
                             
-                        )}
+                        ) : <div className="placeholderDiv">Search Results</div>}
 
                     </div>
                 </div>
 
                 <div className="DisplayAlumni">
-                    { viewSelectedProfile ? <AlumniProfile profile={viewSelectedProfile}/> : "" }
+                    { viewSelectedProfile ? <AlumniProfile profile={viewSelectedProfile}/> : <div className="placeholderDiv">No profile is selected</div> }
                     
                 </div>
 

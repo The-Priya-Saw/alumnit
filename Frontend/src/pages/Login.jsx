@@ -42,7 +42,7 @@ const Login = (props) => {
     }
 
     return <div className="Login">
-        <Navbar isTransperent={true}/>
+        <Navbar isTransperent={true} isShadowNavbar={true}/>
         <div className="login_container">
             <form onSubmit={handleOnSubmit}>
                 <div className="logo">

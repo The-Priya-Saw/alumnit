@@ -31,7 +31,7 @@ const Home = (props) => {
     return (
         <div className="Home">
             <section id="header">
-                <Navbar isTransperent={true}/>
+                <Navbar isTransperent={true} isShadowNavbar={true}/>
                 <div id="header-content">
                     <p id="quote">
                         Let's <br/>Connect <br/>And
