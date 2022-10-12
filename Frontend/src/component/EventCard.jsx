@@ -29,7 +29,7 @@ function EventCard(props) {
         <div className="eventContent">
             <Card.Header className="eventName ">{props.EventName}</Card.Header>
             <Card.Body>
-            <Card.Title className="eventDate eventTimes">{date.toLocaleDateString() + " , " + date.toLocaleTimeString()}</Card.Title>
+            <Card.Title className="eventDate eventTimes">{date.toDateString() + " , " + date.toLocaleTimeString()}</Card.Title>
             <Card.Title className="location">{props.Location}</Card.Title>
             <Card.Text className="description">
                 {props.Description}

@@ -1,5 +1,6 @@
 import "./Card.css";
 const Card = (props) => {
+  const date = new Date(props.Date); 
   return (
     // <div className="Card">
     //   <img className="img" src={props.img} />
@@ -11,7 +12,7 @@ const Card = (props) => {
         <img src={props.img} alt="none"/>
         <div class="descriptions">
           <h1>{props.EventName}</h1>
-          <h5> {props.Date} </h5>
+          <h5> {date.toDateString() + " , " + date.toLocaleTimeString()} </h5>
           <h5> {props.Location} </h5>
           <a href="/event">View more </a>
 

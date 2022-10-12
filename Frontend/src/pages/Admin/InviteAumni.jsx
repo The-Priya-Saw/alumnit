@@ -40,6 +40,7 @@ const InviteAlumni = (props) => {
     }
 
     const onSearch = async (e) => {
+        updateSelectedProfiles([]);
         const urlsResponse = await fetch("http://localhost:3002/extractUrls", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
