@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import Navbar from "../../component/Navbar";
 import "./InviteAlumni.css";
 import AlumniShortProfile from "../../component/admin/AlumniShortProfile";
@@ -6,6 +6,7 @@ import AlumniProfile from "../../component/admin/AlumniProfile";
 import dummy from "./dummy";
 import Popup from "reactjs-popup";
 import CustomPostForm from "../../component/CareerPostForm.jsx";
+import CurrentUserContext from "../../context/LoggedInUser/CurrentUserContext";
 
 
 const InviteAlumni = (props) => {
@@ -15,7 +16,24 @@ const InviteAlumni = (props) => {
     const [selectedProfiles, updateSelectedProfiles] = useState([]);
     const [resultProfiles, setResultProfiles] = useState([]);
     const [viewSelectedProfile, setViewSelectedProfile] = useState(undefined);
+    const currentUser = useContext(CurrentUserContext);
+    useEffect(() => {
+        const authenticate = async () => {
+            const response = await fetch("http://localhost:3001/checkUser");
+            const eventPostsJson = await response.json();
+        }
+        authenticate();
+        if(currentUser.state && currentUser.state.User){
+            if(!currentUser.state.User.isAdmin){
+                alert("Restricted Access");
+                window.location = "/"
+            }
+        }else{
+            alert("Restricted Access");
+            window.location = "/"
+        }
 
+    });
     const onSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
         console.log(e.target)

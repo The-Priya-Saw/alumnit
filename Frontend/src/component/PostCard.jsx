@@ -31,19 +31,10 @@ const DefaultComponent = () => {
             signupLink: 'http://localhost:3001/'
           }}
           commentData={data}
-        //   onSubmitAction={(data: {
-        //     userId: string,
-        //     comId: string,
-        //     avatarUrl: string,
-        //     userProfile?: string,
-        //     fullName: string,
-        //     text: string,
-        //     replies: any,
-        //     commentId: string,
-        //   }) => console.log('check submit, ', data)}
-        //   currentData={(data: any) => {
-        //     console.log('curent data', data)
-        //   }}
+          onSubmitAction={(data) => console.log('check submit, ', JSON.stringify(data))}
+          currentData={(data) => {
+            console.log('curent data', data)
+          }}
         />
   }
 

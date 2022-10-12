@@ -1,10 +1,11 @@
 import Navbar from "../component/Navbar.jsx";
 import EventCard from "../component/EventCard.jsx";
 import "./Event.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Popup from "reactjs-popup";
 import EventPostForm from "../component/EventPostForm.jsx";
 import Footer from "../component/Footer.jsx";
+import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 
 const loggedInUser = {name:"Admin", role:""};
 
@@ -15,6 +16,7 @@ const array = Array.from(Array(0).keys());
 const Event = (props) => {
     const [eventPosts, updateEventPosts] = useState([]);
     const [category, setCategory] = useState("all");
+    const currentUser = useContext(CurrentUserContext);
     useEffect(() => {
         const fetchEvents = async () => {
             const response = await fetch("http://localhost:3001/events/" + category);
@@ -22,6 +24,8 @@ const Event = (props) => {
             updateEventPosts(eventPostsJson);
         }
         fetchEvents();
+        console.log(currentUser);
+
     }, [category]);
 
     const handleCategoryClick = (e) => {
@@ -52,7 +56,7 @@ const Event = (props) => {
                     </div>
                     <div className="Event-post">
                     {
-                        loggedInUser.role === "admin" ? 
+                        currentUser && currentUser.state && currentUser.state.User.isAdmin ? 
                         <Popup trigger={<button type="input" id="btn-event-post"> Post Event</button>} modal>
                             {
                                 close => <EventPostForm close={close} />

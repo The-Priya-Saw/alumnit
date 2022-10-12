@@ -23,7 +23,7 @@ function App() {
       });
       if(userResponse.status === 200){
         const userJson = await userResponse.json();
-        currentUser.setState(userJson);
+        await currentUser.setState(userJson);
       }else{
         currentUser.setState(undefined);
       }
