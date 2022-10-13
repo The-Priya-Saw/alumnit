@@ -9,15 +9,25 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/extractUrls",async (req,res) => {
-    const keyword = req.body.keyword;
-    const profileUrls = await ExtractProfileURLs(keyword);
-    res.status(200).json(profileUrls);
+    try {
+        const keyword = req.body.keyword;
+        const profileUrls = await ExtractProfileURLs(keyword,false);
+        res.status(200).json(profileUrls);
+    } catch (error) {
+        
+    }
+
 });
 
 app.post("/getProfiles",async (req,res) => {
-    const profileUrls =req.body.profileUrls;
-    const profiles = await ScrapeProfiles(profileUrls);
-    res.status(200).json(profiles);
+    try {
+        const profileUrls =req.body.profileUrls;
+        const profiles = await ScrapeProfiles(profileUrls,false);
+        res.status(200).json(profiles);
+    } catch (error) {
+        
+    }
+
 });
 
 app.post("/invite", async (req,res)=>{

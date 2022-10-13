@@ -58,7 +58,7 @@ const handleErrors = (err) => {
 const registerUser = async (req, res) => {
     try {
         const { FullName, JobTitle, PassingYear, Email, Password } = req.body;
-        const ProfilePicture = `${req.protocol}://${req.get('host')}/${req.file.path}`;
+        const ProfilePicture = req.file && `${req.protocol}://${req.get('host')}/${req.file.path}`;
         console.log(ProfilePicture);
         console.log(req.body);
         const User = await UserModel.create({ FullName, JobTitle, PassingYear, Email, Password, ProfilePicture });

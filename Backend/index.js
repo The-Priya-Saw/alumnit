@@ -46,7 +46,8 @@ app.use("/community",CommunityRoutes);
 
 app.get("/",(req,res)=>{
     // res.json({"msg":"message response"});
-    res.cookie("val","1234");
+
+    // res.cookie("val","1234");
     res.send("cookie sent");
 });
 

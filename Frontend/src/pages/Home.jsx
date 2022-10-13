@@ -49,7 +49,7 @@ const Home = (props) => {
                 </div>
                 <div className="welcome-content">
                     <p>Whether you’re looking to reconnect or grow your career, support <span className="text-primary">Bharati Vidpeeth’s</span> mission or learn about the impact of giving, you’ve come to the right place. we’ll show you how, where, and why. </p>
-                    <p>If you’ve come <span className="text-primary">To connect</span>, we encourage you to check out communities, career offerings, and events. Take a look around and find the Bharati vidyapeeth that speaks to you.</p>
+                    <p>If you’ve come <span className="text-primary">To connect</span>, we encourage you to check out communities, career offerings, and events. Take a look around us, let's connect and grow.</p>
                     <hr/>
                 </div>
 

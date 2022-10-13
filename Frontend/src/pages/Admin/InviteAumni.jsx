@@ -19,21 +19,36 @@ const InviteAlumni = (props) => {
     const currentUser = useContext(CurrentUserContext);
     useEffect(() => {
         const authenticate = async () => {
-            const response = await fetch("http://localhost:3001/checkUser");
+            const response = await fetch("http://localhost:3001/checkUser",{
+                method: "GET",
+                credentials: "include"
+            });
             const eventPostsJson = await response.json();
+        if(eventPostsJson.error){
+            window.location = "/";
+        }
+            // if(currentUser.state && currentUser.state.User){
+            //     if(!currentUser.state.User.isAdmin){
+            //         alert("Restricted Access");
+            //         // window.location = "/"
+            //     }else{
+            //         alert("Access Granted")
+            //     }
+            // }else{
+            //     alert("Restricted Access");
+            //     // window.location = "/"
+            // }
+            if(!eventPostsJson.User.isAdmin){
+                console.log("Restricted Access",eventPostsJson);
+                window.location = "/"
+            }else{
+                console.log("Access Granted")
+            }
         }
         authenticate();
-        if(currentUser.state && currentUser.state.User){
-            if(!currentUser.state.User.isAdmin){
-                alert("Restricted Access");
-                window.location = "/"
-            }
-        }else{
-            alert("Restricted Access");
-            window.location = "/"
-        }
 
-    });
+
+    },[]);
     const onSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
         console.log(e.target)
@@ -115,45 +130,49 @@ const InviteAlumni = (props) => {
     return (
         <div className="InviteAlumni">
             <Navbar isAdmin={true} isLogin={true} />
-            <div className="AlumniContainer">
+            {currentUser.state && currentUser.state.User && currentUser.state.User.isAdmin ? 
+                            <div className="AlumniContainer">
 
-                <div className="SearchAlumni">
-                    <div className="divSearchBox">
-                        <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search name" />
-                        <button onClick={onSearch} id="btnSearch">Search</button>
-                        {/* <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button> */}
-                        <Popup trigger={<button  disabled={!isSelected} id="btnSend">Send</button>} modal>
-                            {/* <CustomPostForm updatePage={setUpdateCount}/> */}
-                            {
-                                close => <InviteNote close={close}/>
+                            <div className="SearchAlumni">
+                                <div className="divSearchBox">
+                                    <input onChange={onSearchTermChange} value={searchTerm} id="alumnisearchbox" type="search" placeholder="Search name" />
+                                    <button onClick={onSearch} id="btnSearch">Search</button>
+                                    {/* <button onClick={onClickSend} disabled={!isSelected} id="btnSend">Send</button> */}
+                                    <Popup trigger={<button  disabled={!isSelected} id="btnSend">Send</button>} modal>
+                                        {/* <CustomPostForm updatePage={setUpdateCount}/> */}
+                                        {
+                                            close => <InviteNote close={close}/>
+                                            
+                                        }
+                                    </Popup>
+                                </div>
+                                <div className="searchResults">
+                                    {
+                                    resultProfiles.length > 0 ? resultProfiles.map((profile, index) =>{
+                                        return <AlumniShortProfile
+                                            key={index}
+                                            index={index}
+                                            handleCheckbox={handleCheckbox}
+                                            college="BVCOENM 2019 - 2021"
+                                            profile={profile}
+                                            selectedProfile={{viewSelectedProfile, setViewSelectedProfile}}
+                                        />
+                                    }
+                                        
+                                    ) : <div className="placeholderDiv">Search Results</div>}
+            
+                                </div>
+                            </div>
+            
+                            <div className="DisplayAlumni">
+                                { viewSelectedProfile ? <AlumniProfile profile={viewSelectedProfile}/> : <div className="placeholderDiv">No profile is selected</div> }
                                 
-                            }
-                        </Popup>
-                    </div>
-                    <div className="searchResults">
-                        {
-                        resultProfiles.length > 0 ? resultProfiles.map((profile, index) =>{
-                            return <AlumniShortProfile
-                                key={index}
-                                index={index}
-                                handleCheckbox={handleCheckbox}
-                                college="BVCOENM 2019 - 2021"
-                                profile={profile}
-                                selectedProfile={{viewSelectedProfile, setViewSelectedProfile}}
-                            />
-                        }
-                            
-                        ) : <div className="placeholderDiv">Search Results</div>}
+                            </div>
+            
+                        </div>
+            : ""
+            }
 
-                    </div>
-                </div>
-
-                <div className="DisplayAlumni">
-                    { viewSelectedProfile ? <AlumniProfile profile={viewSelectedProfile}/> : <div className="placeholderDiv">No profile is selected</div> }
-                    
-                </div>
-
-            </div>
         </div>
     );
 }
