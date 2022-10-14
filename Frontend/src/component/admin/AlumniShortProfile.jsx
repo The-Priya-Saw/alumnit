@@ -5,6 +5,7 @@ const AlumniShortProfile = (props) => {
     const handleClick = () => {
         props.selectedProfile.setViewSelectedProfile(profile)
     }
+
     return <div onClick={handleClick} className="AlumniShortProfile">
         <input onChange={e => props.handleCheckbox(e, props)} name="selected" type="checkbox"/>
         <div className="alumniShortProfileDetail">
@@ -15,7 +16,7 @@ const AlumniShortProfile = (props) => {
                 <div className="college">{props.college}</div>
             </div>
         </div>
-        <button className="btnAction">{props.isConnected ? "Message" : "Invite"}</button>
+        <button className="btnAction">{profile.isConnected ? "Message" : "Invite"}</button>
     </div>
 }
 

@@ -100,7 +100,9 @@ const InviteAlumni = (props) => {
     }
 
     const InviteNote = (props) => {
-        return <form onSubmit={onClickSend} className="InviteNote">
+        return <form onSubmit={ async (e) => {
+            onClickSend(e);
+        }} className="InviteNote">
                   <a className="close bi bi-x-square" style={{textAlign: "end"}} onClick={props.close}>
               </a>
             <h5>Invite Note</h5>

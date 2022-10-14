@@ -4,10 +4,11 @@ import fs from "fs";
 
 const cookie = JSON.parse(fs.readFileSync("./cookie.json"));
 const selectors = {
-    profileImg: ".ph5.pb5 > .display-flex > div img",
-    fullName: ".ph5.pb5 > .mt2 h1",
-    title: ".ph5.pb5 > .mt2 .text-body-medium",
-    location: ".ph5.pb5 > .mt2 .pv-text-details__left-panel:last-child span.text-body-small",
+    profileImg: ".ph5 > .display-flex > div img",
+    fullName: ".ph5 > .mt2 h1",
+    title: ".ph5 > .mt2 .text-body-medium",
+    location: ".ph5 > .mt2 .pv-text-details__left-panel:last-child span.text-body-small",
+    messageButton: ".ph5 .pvs-profile-actions a",
     education: {
         sectionTitle: "main#main section #education +div span",
         listItems: "main#main section #education +div + div ul.ph5 > li",
@@ -52,7 +53,9 @@ const ScrapeProfiles = async (profileURL,headless=true) => {
         const location = $(selectors.location).text().trim();
         profile.location = location;
         console.log(location);
-    
+
+        const isConnected = $(selectors.messageButton).attr("href");
+        profile.isConnected = Boolean(isConnected);
     
         const educationSectionTitle = $(selectors.education.sectionTitle);
         console.log(educationSectionTitle.text());

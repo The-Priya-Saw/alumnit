@@ -4,14 +4,15 @@ import fs from "fs";
 
 
 const selectors = {
-	pvsActionButtons: ".ph5.pb5 .pvs-profile-actions > *",
-	checkConnection: ".ph5.pb5 .pvs-profile-actions .entry-point button svg ",
-    connectButton: ".ph5.pb5 .pvs-profile-actions button.artdeco-button--primary",
-    messageButton: ".ph5.pb5 .pvs-profile-actions .entry-point",
-	pending: ".ph5.pb5 .pvs-profile-actions > button:first-child",
-	moreButton: ".ph5.pb5 .pvs-profile-actions > div:last-child button",
-	moreConnect1: ".ph5.pb5 .pvs-overflow-actions-dropdown__content ul li:nth-child(5)",
-	moreConnect2: ".ph5.pb5 .pvs-overflow-actions-dropdown__content ul li:nth-child(4)",
+	pvsActionButtons: ".ph5 .pvs-profile-actions > *",
+	checkConnection: ".ph5 .pvs-profile-actions .entry-point button svg ",
+    connectButton: ".ph5 .pvs-profile-actions button.artdeco-button--primary",
+    messageButton: ".ph5 .pvs-profile-actions .entry-point",
+	actionMessageButton: ".ph5 .pvs-profile-actions a",
+	pending: ".ph5 .pvs-profile-actions > button:first-child",
+	moreButton: ".ph5 .pvs-profile-actions > div:last-child button",
+	moreConnect1: ".ph5 .pvs-overflow-actions-dropdown__content ul li:nth-child(5)",
+	moreConnect2: ".ph5 .pvs-overflow-actions-dropdown__content ul li:nth-child(4)",
 	addNote: "#artdeco-modal-outlet .send-invite .artdeco-modal__actionbar button:first-child",
 	textAreaCustomMessage: "#artdeco-modal-outlet .send-invite textarea#custom-message",
 	sendButton: "#artdeco-modal-outlet .send-invite .artdeco-modal__actionbar button:last-child",
@@ -129,8 +130,8 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 						return selectors.moreConnect1
 					}
 				},selectors);
-
 				const connectButton = await page.waitForSelector(moreConnect);
+				console.log(connectButton.$);
 				await connectButton.click();
 				await requestWithNote();
 			}
@@ -141,9 +142,22 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 		}
 	}
 
+	const message = async (profile) => {
+		// load a profile url into a page and that profile will be loaded into page
+		await page.goto(profile.url,{ waitUntil: "domcontentloaded" });
+		const actionMessageButton = await page.waitForSelector(selectors.actionMessageButton);
+		await actionMessageButton.click();
+	}
+
 	for(let i=0;i<profiles.length;i++){
 		console.log("Sendning Connection request to " + profiles[i].fullName)
-		await connect(profiles[i]);
+		if(!profiles[i].isConnected){
+			await connect(profiles[i]);
+		}else{
+			console.log("already connected");
+			await message(profiles[i]);
+		}
+		
 	}
 
 
