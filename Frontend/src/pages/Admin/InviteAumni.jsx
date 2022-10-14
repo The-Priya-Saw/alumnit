@@ -95,7 +95,8 @@ const InviteAlumni = (props) => {
             console.log(await res.json())
             alert("done");
         } catch (error) {
-            alert(error)
+            alert(error);
+            console.log(error)
         }
     }
 

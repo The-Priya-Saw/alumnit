@@ -56,6 +56,8 @@ const ScrapeProfiles = async (profileURL,headless=true) => {
 
         const isConnected = $(selectors.messageButton).attr("href");
         profile.isConnected = Boolean(isConnected);
+
+        profile.messageUrl = "https://www.linkedin.com" + isConnected;
     
         const educationSectionTitle = $(selectors.education.sectionTitle);
         console.log(educationSectionTitle.text());

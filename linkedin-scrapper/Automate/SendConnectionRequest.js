@@ -35,7 +35,7 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 	}
 	const response = {};
 	// Launch browser
-	const browser = await puppeteer.launch({headless: false,userDataDir: './my/path'});
+	const browser = await puppeteer.launch({headless: true,userDataDir: './my/path'});
 
 	// Create a new page inside the browser
 	const page = await browser.newPage();
@@ -104,6 +104,7 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 				await textAreaCustomMessage.press("Backspace");
 				
 				const sendButton = await page.waitForSelector(selectors.sendButton);
+				await page.screenshot({path: `${fullName}.png`, fullPage: true})
 				await sendButton.focus();
 				await sendButton.click();
 				response[profile.fullName] = "Sent connetion request";
@@ -143,10 +144,31 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 	}
 
 	const message = async (profile) => {
+		await page.setCookie(cookie);
+		const messageNote = createMessage(profile.fullName.split(" ")[0]);
+
 		// load a profile url into a page and that profile will be loaded into page
-		await page.goto(profile.url,{ waitUntil: "domcontentloaded" });
-		const actionMessageButton = await page.waitForSelector(selectors.actionMessageButton);
-		await actionMessageButton.click();
+		await page.goto(profile.messageUrl,{ waitUntil: "domcontentloaded" });
+		const messageForm = await page.waitForSelector(".msg-form__contenteditable");
+		await messageForm.focus();
+		await messageForm.click();
+		await messageForm.press(".");
+		await messageForm.focus();
+		await messageForm.click();
+		await page.evaluate((messageNote) => {
+			document.querySelector(".msg-form__contenteditable p").innerHTML = messageNote;
+		},messageNote);
+		// await page
+		await messageForm.focus();
+		await messageForm.click();
+		await messageForm.press(".");
+		// await messageForm.press("Backspace");
+
+		const messageFormSendButton = await page.waitForSelector(".msg-form__send-button");
+		await messageFormSendButton.focus();
+
+		await messageFormSendButton.click();
+		
 	}
 
 	for(let i=0;i<profiles.length;i++){
@@ -156,6 +178,7 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 		}else{
 			console.log("already connected");
 			await message(profiles[i]);
+			await page.screenshot({path: `testresult${i}.png`, fullPage: true})
 		}
 		
 	}
