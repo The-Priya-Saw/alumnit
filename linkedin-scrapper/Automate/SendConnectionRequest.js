@@ -178,7 +178,8 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 		}else{
 			console.log("already connected");
 			await message(profiles[i]);
-			await page.screenshot({path: `testresult${i}.png`, fullPage: true})
+			await page.screenshot({path: `testresult${i}.png`, fullPage: true});
+			response[i] = "done";
 		}
 		
 	}
