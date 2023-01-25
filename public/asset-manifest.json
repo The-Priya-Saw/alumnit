@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7efaa832.css",
+    "main.js": "/static/js/main.b660c986.js",
+    "static/media/home_background.png": "/static/media/home_background.09b969722e0afd3c6cf6.png",
+    "static/media/bvp_logo.png": "/static/media/bvp_logo.035a961abecda75cbaa5.png",
+    "static/media/alumnit_logo.svg": "/static/media/alumnit_logo.a4c45358b9fb2a61c9f028130f92cccb.svg",
+    "static/media/EventBackground.svg": "/static/media/EventBackground.e51d804e309841e335e0.svg",
+    "index.html": "/index.html",
+    "static/media/svg": "/static/media/2a0bc34f2fdf6d6b.6e0f8a48a90f41998086.svg",
+    "static/media/home_object.svg": "/static/media/home_object.2a1db09e519a3e4895df3225d783437c.svg",
+    "main.7efaa832.css.map": "/static/css/main.7efaa832.css.map",
+    "main.b660c986.js.map": "/static/js/main.b660c986.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7efaa832.css",
+    "static/js/main.b660c986.js"
+  ]
+}
