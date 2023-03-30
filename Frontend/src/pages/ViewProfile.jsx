@@ -1,14 +1,16 @@
 import Navbar from "../component/Navbar";
-import Avatar from "@mui/material/Avatar";
 
 import "./ViewProfile.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AlumniProfile from "../component/ViewProfile/AlumniProfile";
+import AlumniCard from "../component/AlumniCard/AlumniCard";
 
 const ViewProfile = (props) => {
-  // const { id } = useParams();
-  const id = "63f1fbc8bef0afbb69a345e9";
+  const { id } = useParams();
+  // const id = "63f1fbc8bef0afbb69a345e9";
   const [recommendedProfiles, setRecommendedProfiles] = useState([]);
+  const [recommendedProfileCards, setRecommendedProfileCards] = useState([]);
   const profile = {
     id: "63f1e38f0666421fed18d222",
     profileImg:
@@ -38,8 +40,9 @@ const ViewProfile = (props) => {
 
   useEffect(() => {
     const recommend = async () => {
-      const response = await fetch(`http://127.0.0.1:5000/get/${id}`);
+      const response = await fetch(`http://127.0.0.1:5000/recommend/${id}`);
       const resJson = await response.json();
+      let temp_recommendedProfiles = [];
       resJson.forEach((userProfile) => {
         let experiences = [];
         for (let i = 0; i < userProfile.experiences.length / 2; i += 2) {
@@ -53,110 +56,48 @@ const ViewProfile = (props) => {
           profileImg:
             "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
           fullName: userProfile.fullName,
-          title: userProfile.title[0],
+          title: userProfile.title,
           skills: userProfile.skills,
           certifications: userProfile.certifications,
           experiences: experiences,
         };
-        recommendedProfiles.push(profile);
+        temp_recommendedProfiles.push(profile);
+        // recommendedProfileCards.push(<AlumniCard profile={profile} />);
       });
-      console.log(recommendedProfiles);
+      setRecommendedProfiles(temp_recommendedProfiles);
     };
+    //
     recommend();
   }, []);
+
+  useEffect(() => {
+    console.log(recommendedProfiles);
+    console.warn("Value", recommendedProfiles[0]);
+    const tags = recommendedProfiles.map((prof) => <AlumniCard profile={prof} />);
+    tags.shift();
+    setRecommendedProfileCards(tags);
+  }, [recommendedProfiles]);
 
   return (
     <div className="viewProfilePage">
       <Navbar shadowNavbar={false} />
       <div className="viewProfile">
         <div className="profile">
-          <ProfilePictureWithName
-            profile={profile}
-            profileImg={profile.profileImg}
-            fullName={profile.fullName}
-          />
+          {recommendedProfiles[0] && (
+            <AlumniProfile
+              profile={recommendedProfiles[0]}
+              profileImg={recommendedProfiles[0].profileImg}
+              fullName={recommendedProfiles[0].fullName}
+            />
+          )}
         </div>
-        <div className="recommendedProfiles">a</div>
-      </div>
-    </div>
-  );
-};
-
-const ProfilePictureWithName = ({ profile, profileImg, fullName }) => {
-  const fullNameStyle = {
-    fontSize: "22px",
-  };
-  return (
-    <div
-      style={{
-        padding: "15px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      // divider
-    >
-      <Avatar src={profileImg} sx={{ width: "100px", height: "100px" }} />
-      <p style={fullNameStyle}>{fullName}</p>
-
-      <div className="alumniTitle">
-        <p class="profile-p">{profile.title}</p>
-      </div>
-
-      {profile.experiences.length > 0 && (
-        <div className="experienceContainer">
-          <p class="profile-p">
-            <p className="profile-p profile-label">
-              <b>Experience</b>
-            </p>
-          </p>
-          {profile.experiences.map((exp) => {
-            return (
-              <p class="profile-p">
-                <span className="experiences-role">
-                  <b>{exp.role}</b>
-                </span>
-                <br />
-                {exp.organization}
-                <hr />
-              </p>
-            );
-          })}
+        <div className="recommendedProfiles">
+          <h6>Recommend Profiles</h6>
+          {/* {recommendedProfiles.map((prof) => (
+            <AlumniCard profile={prof} />
+          ))} */}
+          {recommendedProfileCards}
         </div>
-      )}
-
-      {profile.certifications.length > 0 && (
-        <div className="certificationsContainer">
-          <p class="profile-p">
-            <p className="profile-p profile-label">
-              <b>Certifications</b>
-            </p>
-          </p>
-          <ul className="profile-p">
-            {profile.certifications.map((certification) => {
-              return <li>{certification}</li>;
-            })}
-          </ul>
-        </div>
-      )}
-
-      <div class="skills experienceContainer">
-        <p class="profile-p profile-label">
-          <b>Skills</b>
-        </p>
-        <ul>
-          {profile.skills.map((skill) => (
-            <li>{skill}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="urlContainer experienceContainer">
-        <p class="profile-p">
-          <b>Connect on Linkedln</b>
-        </p>
-        <p class="profile-p">http://Linkedln.com/priya-saw</p>
       </div>
     </div>
   );

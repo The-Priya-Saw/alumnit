@@ -11,7 +11,7 @@ CORS(app)
 alumniRecommendationModel = AlumniRecommendationModel(open("df.pkl","rb"),open("dataDict.pkl","rb"),open("similarity.pkl","rb"))
 
 
-@app.route('/get/<id>', methods=['GET'])
+@app.route('/recommend/<id>', methods=['GET'])
 def handle_get(id):
     # Do something with the ID
     return alumniRecommendationModel.recommendProfileById(id)

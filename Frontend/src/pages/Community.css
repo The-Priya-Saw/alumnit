@@ -1,4 +1,4 @@
-.Community{
+.Community {
   background-color: var(--cream-color);
   background-image: url("../images/EventBackground.svg");
   background-position-y: bottom;
@@ -12,30 +12,39 @@
 
 .communityPostContainer {
   margin-top: 20px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .alumniProfileContainer {
+  padding: 50px 20px;
   background-color: #efe7e7;
   margin-top: 20px;
-display: flex;
-flex-direction: column;
-/* justify-content: center; */
-/* align-items: center; */
-height: 90vh;
-width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* height: 90vh; */
+  width: 100%;
 
 }
 
-.communityContainer{
-    display: flex;
-    flex-direction: row;
-    margin: 50px;
-    /* justify-content: center; */
-    align-items: flex-start;
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.communityContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+  /* justify-content: center; */
+  align-items: flex-start;
 }
 
 
@@ -46,7 +55,7 @@ width: 100%;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color:transparent;
+  background-color: transparent;
   font-family: 'Baloo Paaji 2', cursive;
 }
 
@@ -137,19 +146,19 @@ width: 100%;
 
 
 
-.Community .AlumniProfile{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #d9d9d98c;
-    width: 400px;
-    height: 100%;
-    padding: 50px;
-    color: #1f1f1f;
-    overflow-y: auto;
+.Community .AlumniProfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #d9d9d98c;
+  width: 400px;
+  height: 100%;
+  padding: 50px;
+  color: #1f1f1f;
+  overflow-y: auto;
 }
 
-.profilePic{
+.profilePic {
   height: 50px;
 }

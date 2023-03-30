@@ -1,0 +1,84 @@
+/*improt google font you can try your choice of font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+
+
+h6 {
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.MentorCard.card-container {
+    border-radius: 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    color: black;
+    padding: 30px;
+    text-align: center;
+    width: 250px;
+    margin: 10px;
+}
+
+.card-container .profile-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.MentorCard .avatar {
+    margin: auto;
+}
+
+.MentorCard .primary {
+    /* background-color: #03BFCB; */
+    background: transparent;
+    border: 1px solid #f03e3e;
+    border-radius: 3px;
+    color: #231E39;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding: 10px 25px;
+}
+
+.MentorCard .primary:hover {
+    background: #f03e3e;
+    color: white;
+    font-weight: bold;
+
+}
+
+button.primary.follow {
+    background-color: transparent;
+    /* color: #02899C; */
+
+}
+
+.card-skills {
+    margin-top: 16px;
+    text-align: left;
+}
+
+.card-skills ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.card-skills ul li {
+    border: 1px solid #f03e3e;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 7px 7px 0;
+    padding: 7px;
+}
+
+.profile-data {
+    text-align: left;
+}

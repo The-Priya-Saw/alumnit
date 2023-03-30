@@ -17,5 +17,5 @@ class AlumniRecommendationModel:
     return recommendation
 
   def recommendProfileById(self,id):
-    index = self.df[self.df["_id"]=="63f1e38f0666421fed18d222"].index[0]
+    index = self.df[self.df["_id"]==id].index[0]
     return self.recommendProfile(index)

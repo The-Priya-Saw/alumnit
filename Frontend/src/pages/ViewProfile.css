@@ -8,6 +8,8 @@
     flex-direction: row;
     justify-content: start;
     padding: 10px;
+    margin: 20px 100px;
+
 }
 
 /* Profile */
@@ -18,14 +20,7 @@
     height: max-content;
     margin-right: 10px;
     overflow: hidden;
-}
-
-/* Recommended Profile */
-
-.recommendedProfiles {
-    background: rgba(255, 255, 255, 0.46);
-    width: 100%;
-    height: max-content;
+    /* flex: 10; */
 }
 
 .experienceContainer {
@@ -87,4 +82,15 @@
 
 .profile-label {
     font-size: 20px;
+}
+
+/* Recommended Profile */
+
+.recommendedProfiles {
+    background: rgba(255, 255, 255, 0.46);
+    width: 70%;
+    height: max-content;
+    /* flex: 5; */
+    /* overflow-y: scroll; */
+    max-height: min-content
 }
