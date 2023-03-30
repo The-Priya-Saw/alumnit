@@ -54,7 +54,7 @@ const ViewProfile = (props) => {
         const profile = {
           id: userProfile._id,
           profileImg:
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "https://www.linkedin.com/in/lokesh-patil-77221a24a?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD2c0MYBpPjhurUUxJK3LbPZW122sXfV6k4&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BnxMf31J4QFqNgmcZmN2ahw%3D%3D",
           fullName: userProfile.fullName,
           title: userProfile.title,
           skills: userProfile.skills,
@@ -92,7 +92,7 @@ const ViewProfile = (props) => {
           )}
         </div>
         <div className="recommendedProfiles">
-          <h6>Recommend Profiles</h6>
+          <center><h6>Suggestions  > </h6></center>
           {/* {recommendedProfiles.map((prof) => (
             <AlumniCard profile={prof} />
           ))} */}

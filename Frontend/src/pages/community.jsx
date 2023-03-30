@@ -114,7 +114,7 @@ const Community = (props) => {
         </div>
         <div className="alumniProfileContainer">
           <center>
-            <h2>Find Your Mentor</h2>
+            <h5>Find Your Mentor</h5>
           </center>
           <div className="flex-container">
             {randomProfiles.map((randomProfile) => (
