@@ -1,6 +1,6 @@
 .viewProfilePage {
     background-color: var(--cream-color);
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .viewProfile {
@@ -17,6 +17,7 @@
     width: 100%;
     height: max-content;
     margin-right: 10px;
+    overflow: hidden;
 }
 
 /* Recommended Profile */
@@ -27,7 +28,7 @@
     height: max-content;
 }
 
-.experienceContainer{
+.experienceContainer {
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -39,24 +40,51 @@
     width: 100%;
 }
 
-
-.skills{
-	background-color:#ffffff;
-	text-align: left;
-	padding:15px;
-	margin-top: 30px;
+.certificationsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 15px;
+    margin-top: 30px;
+    width: 100%;
 }
-.skills ul{
+
+.skills {
+    background-color: #ffffff;
+    text-align: left;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+
+.skills ul {
     list-style-type: none;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 
 }
-.skills ul li{
-	border:1px solid #f03e3e;
-	border-radius: 2px;
-	display: inline-block;
-	font-size:12px;
-	margin:0 7px 7px 0;
-	padding: 7px;
+
+.skills ul li {
+    border: 1px solid #f03e3e;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 7px 7px 0;
+    padding: 7px;
+}
+
+.profile-p,
+.skills h6 {
+    width: 100%;
+}
+
+.experiences-role {
+    font-size: 18;
+}
+
+.profile-label {
+    font-size: 20px;
 }

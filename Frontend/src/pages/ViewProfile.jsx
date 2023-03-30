@@ -23,6 +23,10 @@ const ViewProfile = (props) => {
         organization: "TataConsultancyServices",
         role: "AssistantSystemEngineer",
       },
+      {
+        organization: "TataConsultancyServices",
+        role: "AssistantSystemEngineer",
+      },
     ],
     skills: [
       "Python(ProgrammingLanguage)",
@@ -32,6 +36,7 @@ const ViewProfile = (props) => {
       "Bootstrap",
     ],
     education: [],
+    certifications: ["SalesforceCertifiedPlatformDeveloperI", "GestureControlledRobot"],
   };
 
   useEffect(() => {
@@ -61,14 +66,18 @@ const ViewProfile = (props) => {
       console.log(recommendedProfiles);
     };
     recommend();
-  },[]);
+  }, []);
 
   return (
     <div className="viewProfilePage">
       <Navbar shadowNavbar={false} />
       <div className="viewProfile">
         <div className="profile">
-          <ProfilePictureWithName profileImg={profile.profileImg} fullName={profile.fullName} />
+          <ProfilePictureWithName
+            profile={profile}
+            profileImg={profile.profileImg}
+            fullName={profile.fullName}
+          />
         </div>
         <div className="recommendedProfiles">a</div>
       </div>
@@ -76,7 +85,7 @@ const ViewProfile = (props) => {
   );
 };
 
-const ProfilePictureWithName = ({ profileImg, fullName }) => {
+const ProfilePictureWithName = ({ profile, profileImg, fullName }) => {
   const fullNameStyle = {
     fontSize: "22px",
   };
@@ -95,41 +104,76 @@ const ProfilePictureWithName = ({ profileImg, fullName }) => {
       <p style={fullNameStyle}>{fullName}</p>
 
       <div className="alumniTitle">
-        <p>Software Engineer</p>
+        <p class="profile-p">{profile.title}</p>
       </div>
-      <div className="experienceContainer skills">
-     
-      <p><b>Experience</b></p>
-      <p>Software Engineer</p>
-      <p>Amazon India</p>
-    
-     </div>
+      {profile.experiences.length > 0 && (
+        <div className="experienceContainer">
+          <p class="profile-p">
+            <p className="profile-p profile-label">
+              <b>Experience</b>
+            </p>
+          </p>
+          {profile.experiences.map((exp) => {
+            return (
+              <p class="profile-p">
+                <span className="experiences-role">
+                  <b>{exp.role}</b>
+                </span>
+                <br />
+                {exp.organization}
+                <hr />
+              </p>
+            );
+          })}
+        </div>
+      )}
 
-     <div className="EducationContainer experienceContainer">
-     
-      <p><b>Education</b></p>
-      <p>IT Engineering</p>
-      <p>Bharati Vidyapeeth college of engineering</p>
-    
-     </div>
+      {profile.certifications.length > 0 && (
+        <div className="certificationsContainer">
+          <p class="profile-p">
+            <p className="profile-p profile-label">
+              <b>Certifications</b>
+            </p>
+          </p>
+          <ul className="profile-p">
+            {profile.certifications.map((certification) => {
+              return <li>{certification}</li>;
+            })}
+          </ul>
+        </div>
+      )}
+      {/* <div className="EducationContainer experienceContainer">
+        <p class="profile-p profile-label">
+          <b>Education</b>
+        </p>
+        <p class="profile-p">IT Engineering</p>
+        <p class="profile-p">Bharati Vidyapeeth college of engineering</p>
+      </div> */}
 
       <div class="skills experienceContainer">
-      	 	<h6><b>Skills</b></h6>
-      	 	<ul>
-      	 		<li>UI/UX</li>
-      	 		<li>Front End Development</li>
-      	 		<li>HTML</li>
-      	 		<li>CSS</li>
-      	 		<li>JavaScript</li>
-      	 		<li>React</li>
-      	 		<li>Angular</li>
-      	 	</ul>
-      	 </div>
+        <p class="profile-p profile-label">
+          <b>Skills</b>
+        </p>
+        <ul>
+          {/* <li>UI/UX</li>
+          <li>Front End Development</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Angular</li> */}
+          {profile.skills.map((skill) => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </div>
 
-         <div className="urlContainer experienceContainer">
-          <p><b>Connect on Linkedln</b></p>
-          <p>http://Linkedln.com/priya-saw</p>
-         </div>
+      <div className="urlContainer experienceContainer">
+        <p class="profile-p">
+          <b>Connect on Linkedln</b>
+        </p>
+        <p class="profile-p">http://Linkedln.com/priya-saw</p>
+      </div>
     </div>
   );
 };
