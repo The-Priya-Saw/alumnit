@@ -36,7 +36,7 @@ const SendConnectionRequest = async (profiles,messageTemplate,headless=true) => 
 	}
 	const response = {};
 	// Launch browser
-	const browser = await puppeteer.launch({headless: false,userDataDir: './my/path'});
+	const browser = await puppeteer.launch({headless: true,userDataDir: './my/path'});
 
 	// Create a new page inside the browser
 	const page = await browser.newPage();

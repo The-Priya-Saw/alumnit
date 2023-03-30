@@ -1,9 +1,13 @@
 from flask import Flask
 import pickle
+from flask_cors import CORS
+
 
 from AlumniRecommendationModel import AlumniRecommendationModel
 
 app = Flask(__name__)
+CORS(app)
+
 alumniRecommendationModel = AlumniRecommendationModel(open("df.pkl","rb"),open("dataDict.pkl","rb"),open("similarity.pkl","rb"))
 
 

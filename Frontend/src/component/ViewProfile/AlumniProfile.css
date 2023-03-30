@@ -1,0 +1,70 @@
+.AlumniProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #d9d9d98c;
+    /* width: 100%; */
+    height: 100%;
+    padding: 50px;
+    color: #1f1f1f;
+    overflow-y: scroll;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* backdrop-filter: blur(20px); */
+    /* -webkit-backdrop-filter: blur(17px); */
+}
+
+#personalDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* text-align: center; */
+    width: 100%;
+}
+
+#personalDetails div {
+    width: 100%;
+}
+
+#personalDetails div>div,
+#education,
+.EducationItem {
+    width: 100%;
+    background-color: var(--grey);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 11px;
+}
+
+#personalDetails img {
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+#fullName {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(17px);
+}
+
+#title,
+#location {
+    font-size: 20px;
+}
+
+.EducationItem div {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.EducationItem span {
+    padding-left: 10px;
+}
