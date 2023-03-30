@@ -26,3 +26,37 @@
     width: 100%;
     height: max-content;
 }
+
+.experienceContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 15px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+
+.skills{
+	background-color:#ffffff;
+	text-align: left;
+	padding:15px;
+	margin-top: 30px;
+}
+.skills ul{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+
+}
+.skills ul li{
+	border:1px solid #f03e3e;
+	border-radius: 2px;
+	display: inline-block;
+	font-size:12px;
+	margin:0 7px 7px 0;
+	padding: 7px;
+}

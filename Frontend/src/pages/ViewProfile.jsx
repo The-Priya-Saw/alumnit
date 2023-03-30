@@ -61,7 +61,7 @@ const ViewProfile = (props) => {
       console.log(recommendedProfiles);
     };
     recommend();
-  });
+  },[]);
 
   return (
     <div className="viewProfilePage">
@@ -93,6 +93,43 @@ const ProfilePictureWithName = ({ profileImg, fullName }) => {
     >
       <Avatar src={profileImg} sx={{ width: "100px", height: "100px" }} />
       <p style={fullNameStyle}>{fullName}</p>
+
+      <div className="alumniTitle">
+        <p>Software Engineer</p>
+      </div>
+      <div className="experienceContainer skills">
+     
+      <p><b>Experience</b></p>
+      <p>Software Engineer</p>
+      <p>Amazon India</p>
+    
+     </div>
+
+     <div className="EducationContainer experienceContainer">
+     
+      <p><b>Education</b></p>
+      <p>IT Engineering</p>
+      <p>Bharati Vidyapeeth college of engineering</p>
+    
+     </div>
+
+      <div class="skills experienceContainer">
+      	 	<h6><b>Skills</b></h6>
+      	 	<ul>
+      	 		<li>UI/UX</li>
+      	 		<li>Front End Development</li>
+      	 		<li>HTML</li>
+      	 		<li>CSS</li>
+      	 		<li>JavaScript</li>
+      	 		<li>React</li>
+      	 		<li>Angular</li>
+      	 	</ul>
+      	 </div>
+
+         <div className="urlContainer experienceContainer">
+          <p><b>Connect on Linkedln</b></p>
+          <p>http://Linkedln.com/priya-saw</p>
+         </div>
     </div>
   );
 };
