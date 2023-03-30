@@ -1,0 +1,28 @@
+.viewProfilePage {
+    background-color: var(--cream-color);
+    height: 100vh;
+}
+
+.viewProfile {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 10px;
+}
+
+/* Profile */
+
+.profile {
+    background: rgba(255, 255, 255, 0.46);
+    width: 100%;
+    height: max-content;
+    margin-right: 10px;
+}
+
+/* Recommended Profile */
+
+.recommendedProfiles {
+    background: rgba(255, 255, 255, 0.46);
+    width: 100%;
+    height: max-content;
+}

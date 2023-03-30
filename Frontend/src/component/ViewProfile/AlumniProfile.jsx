@@ -39,12 +39,17 @@ const AlumniProfile = (props) => {
           </div>
         </div>
       </div>
-      <div id="education">
-        <h3>Education</h3>
-      </div>
-      {education.map((item) => (
-        <EducationItem education={item} />
-      ))}
+
+      {/* <div id="education">
+                <h3>Education</h3>
+        </div>
+        {
+            education.map(item => 
+                <EducationItem 
+                    education={item}
+                />
+            )
+        } */}
     </div>
   );
 };
