@@ -15,6 +15,7 @@ const Community = (props) => {
   const currentUser = useContext(CurrentUserContext);
   // const [postArray, setPostArray] = useState([]);
   const { CommunityPostList, updateCommunityPostList } = useContext(CommunityPostsContext);
+  const [randomProfiles, setRandomProfiles] = useState([]);
 
   const profile = {
     id: "63f1e38f0666421fed18d222",
@@ -59,6 +60,37 @@ const Community = (props) => {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    const fetchRandomProfiles = async () => {
+      const response = await fetch("http://127.0.0.1:5000/getRandomProfiles");
+      const resJson = await response.json();
+      const temp_recommendedProfiles = [];
+      resJson.forEach((userProfile) => {
+        let experiences = [];
+        for (let i = 0; i < userProfile.experiences.length / 2; i += 2) {
+          experiences.push({
+            org: userProfile.experiences[i],
+            role: userProfile.experiences[i + 1],
+          });
+        }
+        const profile = {
+          id: userProfile._id,
+          profileImg:
+            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+          fullName: userProfile.fullName,
+          title: userProfile.title,
+          skills: userProfile.skills,
+          certifications: userProfile.certifications,
+          experiences: experiences,
+        };
+        temp_recommendedProfiles.push(profile);
+      });
+      setRandomProfiles(temp_recommendedProfiles);
+    };
+
+    fetchRandomProfiles();
+  }, []);
+
   return (
     <div className="Community">
       <Navbar shadowNavbar={true} />
@@ -85,8 +117,8 @@ const Community = (props) => {
             <h2>Find Your Mentor</h2>
           </center>
           <div className="flex-container">
-            {[1, 2, 3, 4, 5, 6, 8, 9, 0, 0, 0, 0].map((e) => (
-              <MentorCard profile={profile} />
+            {randomProfiles.map((randomProfile) => (
+              <MentorCard profile={randomProfile} />
             ))}
           </div>
         </div>
