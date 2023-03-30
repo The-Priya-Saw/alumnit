@@ -1,10 +1,7 @@
 import Navbar from "../component/Navbar";
-import AlumniProfile from "../component/ViewProfile/AlumniProfile";
 import Avatar from "@mui/material/Avatar";
 
 import "./ViewProfile.css";
-import { width } from "@mui/system";
-import { Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -106,6 +103,7 @@ const ProfilePictureWithName = ({ profile, profileImg, fullName }) => {
       <div className="alumniTitle">
         <p class="profile-p">{profile.title}</p>
       </div>
+
       {profile.experiences.length > 0 && (
         <div className="experienceContainer">
           <p class="profile-p">
@@ -142,26 +140,12 @@ const ProfilePictureWithName = ({ profile, profileImg, fullName }) => {
           </ul>
         </div>
       )}
-      {/* <div className="EducationContainer experienceContainer">
-        <p class="profile-p profile-label">
-          <b>Education</b>
-        </p>
-        <p class="profile-p">IT Engineering</p>
-        <p class="profile-p">Bharati Vidyapeeth college of engineering</p>
-      </div> */}
 
       <div class="skills experienceContainer">
         <p class="profile-p profile-label">
           <b>Skills</b>
         </p>
         <ul>
-          {/* <li>UI/UX</li>
-          <li>Front End Development</li>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>Angular</li> */}
           {profile.skills.map((skill) => (
             <li>{skill}</li>
           ))}
