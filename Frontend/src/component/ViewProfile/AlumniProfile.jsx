@@ -75,7 +75,7 @@ const AlumniProfile = ({ profile, profileImg, fullName }) => {
         <p class="profile-p">
           <b>Connect on Linkedln</b>
         </p>
-        <p class="profile-p">{profile.url}</p>
+        <p class="profile-p"><a style={{color:"blue"}} href={profile.url}>{profile.url}</a></p>
       </div>
     </div>
   );
