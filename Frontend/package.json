@@ -21,7 +21,7 @@
     "react-scripts": "^5.0.1",
     "reactjs-dropdown-component": "^1.2.0",
     "reactjs-popup": "^2.0.5",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

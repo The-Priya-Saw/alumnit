@@ -26,6 +26,11 @@ def random_profiles():
     # Do something with the ID
     return alumniRecommendationModel.getRandomProfiles()
 
+@app.route('/getAllNames', methods=['GET'])
+def getAllNames():
+    # Do something with the ID
+    return alumniRecommendationModel.getAllNames()
+
 if __name__ == '__main__':
     app.run(debug=True)
 

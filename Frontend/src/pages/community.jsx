@@ -10,12 +10,16 @@ import ProfileEditForm from "../component/ProfileEditForm";
 import CurrentUserContext from "../context/LoggedInUser/CurrentUserContext";
 import CommunityPostsContext from "../context/CommunityPost/CommunityPostsContext";
 import MentorCard from "../component/MentorCard/MentorCard.jsx";
+import SearchComboBox from "../component/SearchBox";
 
 const Community = (props) => {
   const currentUser = useContext(CurrentUserContext);
   // const [postArray, setPostArray] = useState([]);
   const { CommunityPostList, updateCommunityPostList } = useContext(CommunityPostsContext);
   const [randomProfiles, setRandomProfiles] = useState([]);
+  const [alumniSearchResults, setAlumniSearchResults] = useState([]);
+  const [showSearchResult, toggleShowSearchResult] = useState(false);
+  const [fullNames, setFullNames] = useState([]);
 
   const profile = {
     id: "63f1e38f0666421fed18d222",
@@ -60,7 +64,39 @@ const Community = (props) => {
     fetchPosts();
   }, []);
 
+  const standardizeResponse = (response) => {
+    const resultList = [];
+    response.forEach((userProfile) => {
+      let experiences = [];
+      for (let i = 0; i < userProfile.experiences.length / 2; i += 2) {
+        experiences.push({
+          org: userProfile.experiences[i],
+          role: userProfile.experiences[i + 1],
+        });
+      }
+      const profile = {
+        id: userProfile._id,
+        profileImg:
+          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+        fullName: userProfile.fullName,
+        title: userProfile.title,
+        skills: userProfile.skills,
+        certifications: userProfile.certifications,
+        experiences: experiences,
+      };
+      resultList.push(profile);
+    });
+    return resultList;
+  };
+
   useEffect(() => {
+    const fetchAllNames = async () => {
+      const response = await fetch("http://localhost:5000/getAllNames");
+      const resJson = await response.json();
+      console.log("Names:", resJson);
+      setFullNames(resJson);
+    };
+
     const fetchRandomProfiles = async () => {
       const response = await fetch("http://127.0.0.1:5000/getRandomProfiles");
       const resJson = await response.json();
@@ -87,9 +123,17 @@ const Community = (props) => {
       });
       setRandomProfiles(temp_recommendedProfiles);
     };
-
+    fetchAllNames();
     fetchRandomProfiles();
   }, []);
+
+  const renderProfiles = () => {
+    if (showSearchResult) {
+      return alumniSearchResults.map((randomProfile) => <MentorCard profile={randomProfile} />);
+    } else {
+      return randomProfiles.map((randomProfile) => <MentorCard profile={randomProfile} />);
+    }
+  };
 
   return (
     <div className="Community">
@@ -115,12 +159,25 @@ const Community = (props) => {
         <div className="alumniProfileContainer">
           <center>
             <h5>Find Your Mentor</h5>
+            <SearchComboBox
+              suggestions={fullNames}
+              onSearch={async (query, isEmpty = false) => {
+                // alert(query);
+                if (isEmpty) {
+                  toggleShowSearchResult(false);
+                } else {
+                  // const response = await fetch(`http//localhost:5000/search/${query}`);
+                  const url = `http://localhost:5000/search/${query}`;
+                  const response = await fetch(url);
+
+                  const results = await response.json();
+                  toggleShowSearchResult(results.length > 0);
+                  setAlumniSearchResults(standardizeResponse(results));
+                }
+              }}
+            />
           </center>
-          <div className="flex-container">
-            {randomProfiles.map((randomProfile) => (
-              <MentorCard profile={randomProfile} />
-            ))}
-          </div>
+          <div className="flex-container">{renderProfiles()}</div>
         </div>
       </div>
     </div>
