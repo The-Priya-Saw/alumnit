@@ -4,6 +4,7 @@ const AlumniProfile = ({ profile, profileImg, fullName }) => {
   const fullNameStyle = {
     fontSize: "22px",
   };
+  console.log(profile);
   return (
     <div
       style={{
@@ -74,7 +75,7 @@ const AlumniProfile = ({ profile, profileImg, fullName }) => {
         <p class="profile-p">
           <b>Connect on Linkedln</b>
         </p>
-        <p class="profile-p">http://Linkedln.com/priya-saw</p>
+        <p class="profile-p">{profile.url}</p>
       </div>
     </div>
   );

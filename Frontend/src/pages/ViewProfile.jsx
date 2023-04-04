@@ -59,6 +59,7 @@ const ViewProfile = (props) => {
           title: userProfile.title,
           skills: userProfile.skills,
           certifications: userProfile.certifications,
+          url: userProfile.url,
           experiences: experiences,
         };
         temp_recommendedProfiles.push(profile);
@@ -92,7 +93,9 @@ const ViewProfile = (props) => {
           )}
         </div>
         <div className="recommendedProfiles">
-          <center><h6>Suggestions  > </h6></center>
+          <center>
+            <h6>Suggestions </h6>
+          </center>
           {/* {recommendedProfiles.map((prof) => (
             <AlumniCard profile={prof} />
           ))} */}
