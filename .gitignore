@@ -6,6 +6,8 @@ node_modules
 # Ignore Cache Data
 my/path
 
+/recommendation-model/__pycache__
+
 linkedin-scrapper/my
 linkedin-scrapper/my/path
 
