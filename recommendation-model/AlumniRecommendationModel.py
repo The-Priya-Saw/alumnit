@@ -32,5 +32,8 @@ class AlumniRecommendationModel:
     index = self.df[self.df["_id"]==id].index[0]
     return self.recommendProfile(index)
   
+  def searchProfilesByName(self, name):
+    return self.df.query(f'fullName.str.contains("{name}",case=False)').to_json(orient='records')
+  
 # alumniRecommendationModel = AlumniRecommendationModel(open("df.pkl","rb"),open("dataDict.pkl","rb"),open("similarity.pkl","rb"))
 # print(alumniRecommendationModel.getRandomProfiles())

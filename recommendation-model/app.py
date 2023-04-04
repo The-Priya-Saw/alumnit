@@ -16,6 +16,11 @@ def handle_get(id):
     # Do something with the ID
     return alumniRecommendationModel.recommendProfileById(id)
 
+@app.route('/search/<name>', methods=['GET'])
+def searchProfiles(name):
+    # Do something with the ID
+    return alumniRecommendationModel.searchProfilesByName(name)
+
 @app.route('/getRandomProfiles', methods=['GET'])
 def random_profiles():
     # Do something with the ID
