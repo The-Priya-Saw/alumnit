@@ -1,6 +1,6 @@
 # alumnit
 
-Deployed URL: https://alumnit-app.azurewebsites.net/
+Deployed URL: https://alumnit-deploy.azurewebsites.net/
 
 ## Home page  of azure portal
 ![image](https://user-images.githubusercontent.com/70808475/214692344-57ec2d49-319d-43e9-80e8-9b86311551ef.png)
